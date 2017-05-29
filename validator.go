@@ -38,8 +38,8 @@ const (
 	Tocantins       = "TO" // TO Tocantins
 )
 
-// Validatable interface
-type Validatable interface {
+// ValidatableManager interface
+type ValidatableManager interface {
 	Validate() (bool, error)
 }
 
@@ -55,20 +55,23 @@ func NewIEValidator() *IEValidator {
 }
 
 // Validate func
-func (validator IEValidator) Validate() (bool, error) {
+func (v IEValidator) Validate() (bool, error) {
 
-	var result = false
+	var validator validators.Validatable
 
 	regex := regexp.MustCompile("\\D")
-	insc := regex.ReplaceAllString(strings.TrimSpace(validator.IE), "")
-	uf := strings.ToUpper(validator.UF)
+	insc := regex.ReplaceAllString(strings.TrimSpace(v.IE), "")
+	uf := strings.ToUpper(v.UF)
+
+	rules := validators.NewRule()
+	rules.Build(uf)
 
 	switch uf {
 	case SantaCatarina:
-		result = validators.SC{insc}.IsValid()
+		validator = validators.SC{rules.Get(SantaCatarina)}
 	default:
 		panic("Invalid state name")
 	}
 
-	return result, nil
+	return validator.IsValid(insc), nil
 }
