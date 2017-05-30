@@ -1,6 +1,7 @@
 package validators
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -100,14 +101,18 @@ func (r *Rules) Mod(param string, multipliers []int, divisor int) int64 {
 	for _, value := range values {
 
 		current, _ := strconv.ParseInt(value, 10, 64)
-
+		fmt.Println(current)
 		if a == -1 {
-			a = current
-			total = current + 0
+			total = current
 		} else {
 			total = current + a
 		}
+		a = current
+
+		fmt.Printf("C = %d, A = %d", current, a)
 	}
+
+	fmt.Println(total)
 
 	return total
 }

@@ -1,9 +1,5 @@
 package validators
 
-import (
-	"fmt"
-)
-
 // SC struct - Santa Catarina
 // Implements the Validator interface
 type SC struct {
@@ -13,11 +9,9 @@ type SC struct {
 // IsValid func
 func (v SC) IsValid(inscricao string) bool {
 
-	fmt.Println(len(inscricao))
-	fmt.Println(v.Specs.Weight)
-	if len(inscricao) != v.Specs.Chars {
-		return false
-	}
+	//if len(inscricao) != v.Specs.Chars {
+	//	return false
+	//}
 
 	return true
 }
