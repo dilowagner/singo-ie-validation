@@ -1,6 +1,7 @@
 package validators
 
 import (
+	"strconv"
 	"strings"
 )
 
@@ -83,7 +84,7 @@ func (r *Rules) Subtract(value int) int {
 }
 
 // Mod function
-func (r *Rules) Mod(value string, multipliers []int, divisor int) int {
+func (r *Rules) Mod(param string, multipliers []int, divisor int) int64 {
 
 	if r.IsUndefined(divisor) {
 		divisor = 11
@@ -93,9 +94,20 @@ func (r *Rules) Mod(value string, multipliers []int, divisor int) int {
 		multipliers, _ = r.MountSeries(2, 9)
 	}
 
-	i := 0
+	var total int64
+	values := strings.Split(param, "")
+	var a int64 = -1
+	for _, value := range values {
 
-	slice := strings.Split(value, "")
+		current, _ := strconv.ParseInt(value, 10, 64)
 
-	return 11 - value
+		if a == -1 {
+			a = current
+			total = current + 0
+		} else {
+			total = current + a
+		}
+	}
+
+	return total
 }
