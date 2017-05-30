@@ -14,7 +14,7 @@ type SC struct {
 func (v SC) IsValid(inscricao string) bool {
 
 	fmt.Println(len(inscricao))
-	fmt.Println(v.Specs.Chars)
+	fmt.Println(v.Specs.Weight)
 	if len(inscricao) != v.Specs.Chars {
 		return false
 	}
