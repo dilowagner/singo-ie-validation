@@ -64,14 +64,10 @@ func (v IEValidator) Validate() (bool, error) {
 	uf := strings.ToUpper(v.UF)
 
 	rules := validators.NewRule()
-	rules.Build(uf)
-
-	m := []int{1, 2, 3, 4}
-	rules.Mod(insc, m, 11)
 
 	switch uf {
 	case SantaCatarina:
-		validator = validators.SC{rules.Get(SantaCatarina)}
+		validator = validators.SC{rules}
 	default:
 		panic("Invalid state name")
 	}
