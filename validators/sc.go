@@ -39,7 +39,10 @@ func (v SC) IsValid(inscricao string) bool {
 
 	var verifier int
 	result := 11 - (total % 11)
-	if result > 1 {
+
+	if result == 1 || result == 0 {
+		result = 0
+	} else {
 		verifier, _ = strconv.Atoi(values[len(values)-1 : len(values)][0])
 	}
 
