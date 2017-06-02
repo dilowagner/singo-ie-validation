@@ -34,13 +34,13 @@ func (r *Rules) IsCorrectSize(value string, size int) bool {
 func (r *Rules) MountSeries(start int, end int) ([]int, error) {
 
 	var slice []int
-	if end < start {
-		panic("The end parameter is minus that start")
+	if start < end {
+		panic("The start parameter is minus that end")
 	}
 
-	for start <= end {
+	for start >= end {
 		slice = append(slice, start)
-		start++
+		start--
 	}
 	return slice, nil
 }
