@@ -1,7 +1,6 @@
 package validators
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 )
@@ -24,9 +23,6 @@ func (r *Rules) IsUndefined(obj interface{}) bool {
 // IsCorrectSize function
 func (r *Rules) IsCorrectSize(value string, size int) bool {
 
-	if r.IsUndefined(size) {
-		size = 9
-	}
 	return len(value) == size
 }
 
@@ -45,53 +41,73 @@ func (r *Rules) MountSeries(start int, end int) ([]int, error) {
 	return slice, nil
 }
 
-// First function
-func (r *Rules) First(value string, quantity int) string {
+// GetVerifierDigit function
+func (r *Rules) GetVerifierDigit(value string) string {
 
-	if r.IsUndefined(quantity) {
-		quantity = 8
+	return value[len(value)-1 : len(value)]
+}
+
+// SliceValues function
+func (r *Rules) SliceValues(value string, quantity int) []string {
+
+	values := strings.Split(value, "")
+
+	return values[:quantity]
+}
+
+// GetBaseValue function
+func (r *Rules) GetBaseValue(value string, quantity int) string {
+	if quantity == 0 {
+		quantity = len(value) - 1
 	}
 	return value[:quantity]
 }
 
-// Subtract function
-func (r *Rules) Subtract(value int) int {
+// CalculateByMod function
+func (r *Rules) CalculateByMod(total, divisor int) int {
 
-	if value < 2 {
-		return 0
-	}
-	return 11 - value
+	return divisor - (total % divisor)
 }
 
-// Mod function
-func (r *Rules) Mod(param string, multipliers []int, divisor int) int64 {
+// CalculateTotal function
+func (r *Rules) CalculateTotal(digits []string, series []int) int {
 
-	if r.IsUndefined(divisor) {
-		divisor = 11
-	}
+	var total int
+	for index, digit := range digits {
 
-	if r.IsUndefined(multipliers) {
-		multipliers, _ = r.MountSeries(2, 9)
-	}
-
-	var total int64
-	values := strings.Split(param, "")
-	var a int64 = -1
-	for _, value := range values {
-
-		current, _ := strconv.ParseInt(value, 10, 64)
-		fmt.Println(current)
-		if a == -1 {
-			total = current
-		} else {
-			total = current + a
+		if index == len(series) {
+			continue
 		}
-		a = current
 
-		fmt.Printf("C = %d, A = %d", current, a)
+		current, _ := strconv.Atoi(digit)
+		total = total + series[index]*current
 	}
-
-	fmt.Println(total)
 
 	return total
+}
+
+// ValidateDefaultRule function
+func (r *Rules) ValidateDefaultRule(param string, size int, divisor int) bool {
+
+	var series, _ = r.MountSeries(9, 2)
+	digits := r.SliceValues(param, size)
+
+	var total = r.CalculateTotal(digits, series)
+	if total == 0 {
+		return false
+	}
+
+	var verifier string
+	result := r.CalculateByMod(total, divisor)
+	if result >= 2 {
+		verifier = r.GetVerifierDigit(param)
+	}
+
+	base := r.GetBaseValue(param, 0)
+
+	if param != base+verifier {
+		return false
+	}
+
+	return true
 }
