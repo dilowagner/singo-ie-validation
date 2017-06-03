@@ -63,11 +63,11 @@ func (v IEValidator) Validate() (bool, error) {
 	insc := regex.ReplaceAllString(strings.TrimSpace(v.IE), "")
 	uf := strings.ToUpper(v.UF)
 
-	rules := validators.NewRule()
-
 	switch uf {
 	case SantaCatarina:
-		validator = validators.SC{rules}
+		validator = validators.SC{}
+	case Roraima:
+		validator = validators.RR{}
 	default:
 		panic("Invalid state name")
 	}

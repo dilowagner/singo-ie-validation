@@ -21,9 +21,15 @@ func (r *Rules) IsUndefined(obj interface{}) bool {
 }
 
 // IsCorrectSize function
-func (r *Rules) IsCorrectSize(value string, size int) bool {
+func (r *Rules) IsCorrectSize(insc string, size int) bool {
 
-	return len(value) == size
+	return len(insc) == size
+}
+
+// IsStartWith function
+func (r *Rules) IsStartWith(insc string, value string) bool {
+
+	return insc[:len(value)] == value
 }
 
 // MountSeries function
@@ -42,25 +48,25 @@ func (r *Rules) MountSeries(start int, end int) ([]int, error) {
 }
 
 // GetVerifierDigit function
-func (r *Rules) GetVerifierDigit(value string) string {
+func (r *Rules) GetVerifierDigit(insc string) string {
 
-	return value[len(value)-1 : len(value)]
+	return insc[len(insc)-1 : len(insc)]
 }
 
 // SliceValues function
-func (r *Rules) SliceValues(value string, quantity int) []string {
+func (r *Rules) SliceValues(insc string, quantity int) []string {
 
-	values := strings.Split(value, "")
+	values := strings.Split(insc, "")
 
 	return values[:quantity]
 }
 
 // GetBaseValue function
-func (r *Rules) GetBaseValue(value string, quantity int) string {
+func (r *Rules) GetBaseValue(insc string, quantity int) string {
 	if quantity == 0 {
-		quantity = len(value) - 1
+		quantity = len(insc) - 1
 	}
-	return value[:quantity]
+	return insc[:quantity]
 }
 
 // CalculateByMod function
@@ -76,7 +82,7 @@ func (r *Rules) CalculateTotal(digits []string, series []int) int {
 	for index, digit := range digits {
 
 		if index == len(series) {
-			continue
+			break
 		}
 
 		current, _ := strconv.Atoi(digit)
@@ -87,10 +93,13 @@ func (r *Rules) CalculateTotal(digits []string, series []int) int {
 }
 
 // ValidateDefaultRule function
-func (r *Rules) ValidateDefaultRule(param string, size int, divisor int) bool {
+func (r *Rules) ValidateDefaultRule(insc string, size int, divisor int, series ...int) bool {
 
-	var series, _ = r.MountSeries(9, 2)
-	digits := r.SliceValues(param, size)
+	if len(series) == 0 {
+		series, _ = r.MountSeries(9, 2)
+	}
+
+	digits := r.SliceValues(insc, size)
 
 	var total = r.CalculateTotal(digits, series)
 	if total == 0 {
@@ -100,12 +109,12 @@ func (r *Rules) ValidateDefaultRule(param string, size int, divisor int) bool {
 	var verifier string
 	result := r.CalculateByMod(total, divisor)
 	if result >= 2 {
-		verifier = r.GetVerifierDigit(param)
+		verifier = r.GetVerifierDigit(insc)
 	}
 
-	base := r.GetBaseValue(param, 0)
+	base := r.GetBaseValue(insc, 0)
 
-	if param != base+verifier {
+	if insc != base+verifier {
 		return false
 	}
 
