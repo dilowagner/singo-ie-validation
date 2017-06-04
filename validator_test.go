@@ -8,10 +8,6 @@ import (
 
 func TestValidatorReturnErrorIfInvalidUF(t *testing.T) {
 
-	defer func() {
-		assert.NotNil(t, recover())
-	}()
-
 	validator := NewIEValidator()
 
 	validator.IE = "0100482300112"
@@ -19,7 +15,7 @@ func TestValidatorReturnErrorIfInvalidUF(t *testing.T) {
 
 	_, err := validator.Validate()
 	assert.NotNil(t, err)
-	assert.Equal(t, "UF inválida, verifique o estado passado por parâmetro!", err.Error)
+	assert.Equal(t, "UF inválida, verifique o estado passado por parâmetro!", err.Error())
 }
 
 /**************************************************************

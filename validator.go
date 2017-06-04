@@ -4,6 +4,8 @@ import (
 	"regexp"
 	"strings"
 
+	"errors"
+
 	"github.com/dilowagner/singo-ie-validation/validators"
 )
 
@@ -79,7 +81,7 @@ func (v IEValidator) Validate() (bool, error) {
 	case Roraima:
 		validator = validators.RR{}
 	default:
-		panic("UF inválida, verifique o estado passado por parâmetro!")
+		return false, errors.New("UF inválida, verifique o estado passado por parâmetro!")
 	}
 
 	return validator.IsValid(insc), nil
