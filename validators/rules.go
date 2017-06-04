@@ -80,7 +80,6 @@ func (r *Rules) CalculateMod(total, divisor int) int {
 func (r *Rules) CalculateTotal(insc string, baseSize int, weights []int) int {
 
 	digits := r.SliceValues(insc, baseSize)
-
 	var total int
 	for index, digit := range digits {
 
@@ -91,7 +90,6 @@ func (r *Rules) CalculateTotal(insc string, baseSize int, weights []int) int {
 		current, _ := strconv.Atoi(digit)
 		total = total + weights[index]*current
 	}
-
 	return total
 }
 

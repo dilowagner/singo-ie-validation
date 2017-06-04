@@ -9,27 +9,32 @@ type BA struct {
 func (v BA) IsValid(insc string) bool {
 
 	rule := NewRule()
-	if !rule.IsCorrectSize(insc, 13) {
+	if !rule.IsCorrectSize(insc, 8) && !rule.IsCorrectSize(insc, 9) {
 		return false
 	}
 
-	if !rule.IsStartWith(insc, "01") {
-		return false
+	var lengthCalc = len(insc) - 1
+	base := rule.GetBaseValue(insc, lengthCalc)
+
+	var digitComparison = insc[:1]
+	if rule.IsCorrectSize(insc, 9) {
+		digitComparison = insc[1:2]
 	}
 
-	base := rule.GetBaseValue(insc, 11)
-
-	series := []int{4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2}
-	total := rule.CalculateTotal(insc, 11, series)
-	firstDigit := rule.GetDigit(total, 11)
-
-	series = []int{5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2}
-	total = rule.CalculateTotal(base+firstDigit, 12, series)
-	secondDigit := rule.GetDigit(total, 11)
-
-	if insc != base+firstDigit+secondDigit {
-		return false
+	var mapMod11 = map[string]string{"6": "6", "7": "7", "9": "9"}
+	_, find := mapMod11[digitComparison]
+	var mod = 10
+	if find {
+		mod = 11
 	}
 
-	return true
+	fWeights, _ := rule.GetWeight(lengthCalc, 2)
+	total := rule.CalculateTotal(insc, lengthCalc, fWeights)
+	firstDigit := rule.GetDigit(total, mod)
+
+	sWeights, _ := rule.GetWeight(lengthCalc+1, 2)
+	total = rule.CalculateTotal(base[:lengthCalc-1]+firstDigit, lengthCalc, sWeights)
+	secondDigit := rule.GetDigit(total, mod)
+
+	return insc == base[:len(base)-1]+secondDigit+firstDigit
 }

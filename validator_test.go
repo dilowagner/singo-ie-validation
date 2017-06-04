@@ -311,3 +311,71 @@ func TestValidatorAMInvalidSizeIsNot9Characters(t *testing.T) {
 	}
 	assert.False(result)
 }
+
+/**************************************************************
+ * BAHIA
+ *************************************************************/
+func TestValidatorBAValidWithMod10(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "12345663" // Valido
+	validator.UF = "BA"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado da Bahia")
+	}
+	assert.True(t, result)
+}
+
+func TestValidatorBAValidWithMod11(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "70863108" // Valido
+	validator.UF = "BA"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado da Bahia")
+	}
+	assert.True(t, result)
+}
+
+func TestValidatorBAInvalid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "70763108" // Invalido
+	validator.UF = "BA"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado da Bahia")
+	}
+	assert.False(t, result)
+}
+
+func TestValidatorAMInvalidSizeIsNot9Or8Characters(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "0182" // Menor que 9 e 8
+	validator.UF = "BA"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado da Bahia")
+	}
+	assert.False(t, result)
+
+	validator.IE = "0105482012123234243" // Maior 9 e 8
+	validator.UF = "BA"
+
+	result, err = validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado da Bahia")
+	}
+	assert.False(t, result)
+}
