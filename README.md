@@ -41,3 +41,13 @@ func main() {
 }
 
 ```
+
+## Executando os testes
+Basta clonar o projeto e rodar o comando:
+
+```go
+  go test
+```
+
+## Contribua
+**ATENÇÃO: Esta biblioteca está em fase de desenvolvimento, falta a validação de alguns estados**
