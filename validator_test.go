@@ -6,9 +6,27 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func TestValidatorReturnErrorIfInvalidUF(t *testing.T) {
+
+	defer func() {
+		assert.NotNil(t, recover())
+	}()
+
+	validator := NewIEValidator()
+
+	validator.IE = "0100482300112"
+	validator.UF = "AA"
+
+	_, err := validator.Validate()
+	assert.NotNil(t, err)
+	assert.Equal(t, "UF inválida, verifique o estado passado por parâmetro!", err.Error)
+}
+
+/**************************************************************
+ * ACRE
+ *************************************************************/
 func TestValidatorACValid(t *testing.T) {
 
-	assert := assert.New(t)
 	validator := NewIEValidator()
 
 	validator.IE = "01.004.823/001-12" // Valido
@@ -18,7 +36,7 @@ func TestValidatorACValid(t *testing.T) {
 	if err != nil {
 		t.Error("Erro na validacao do estado do Acre")
 	}
-	assert.True(result)
+	assert.True(t, result)
 }
 
 func TestValidatorACInvalid(t *testing.T) {
@@ -75,6 +93,9 @@ func TestValidatorACInvalidNotStartWith01(t *testing.T) {
 	assert.False(result)
 }
 
+/**************************************************************
+ * ALAGOAS
+ *************************************************************/
 func TestValidatorALValid(t *testing.T) {
 
 	assert := assert.New(t)
@@ -105,7 +126,7 @@ func TestValidatorALInvalid(t *testing.T) {
 	assert.False(result)
 }
 
-func TestValidatorACInvalidSizeIsNot9Characters(t *testing.T) {
+func TestValidatorALInvalidSizeIsNot9Characters(t *testing.T) {
 
 	assert := assert.New(t)
 	validator := NewIEValidator()
@@ -129,7 +150,7 @@ func TestValidatorACInvalidSizeIsNot9Characters(t *testing.T) {
 	assert.False(result)
 }
 
-func TestValidatorACInvalidNotStartWith24(t *testing.T) {
+func TestValidatorALInvalidNotStartWith24(t *testing.T) {
 
 	assert := assert.New(t)
 	validator := NewIEValidator()
@@ -144,6 +165,9 @@ func TestValidatorACInvalidNotStartWith24(t *testing.T) {
 	assert.False(result)
 }
 
+/**************************************************************
+ * AMAPA
+ *************************************************************/
 func TestValidatorAPValid(t *testing.T) {
 
 	assert := assert.New(t)
@@ -227,6 +251,63 @@ func TestValidatorAPInvalidNotStartWith03(t *testing.T) {
 	result, err := validator.Validate()
 	if err != nil {
 		t.Error("Erro na validacao do inicio do estado do Amapá")
+	}
+	assert.False(result)
+}
+
+/**************************************************************
+ * AMAZONAS
+ *************************************************************/
+func TestValidatorAMValid(t *testing.T) {
+
+	assert := assert.New(t)
+	validator := NewIEValidator()
+
+	validator.IE = "025475746" // Valido
+	validator.UF = "AM"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Amazonas")
+	}
+	assert.True(result)
+}
+
+func TestValidatorAMInvalid(t *testing.T) {
+
+	assert := assert.New(t)
+	validator := NewIEValidator()
+
+	validator.IE = "248156310" // Invalido
+	validator.UF = "AM"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Amazonas")
+	}
+	assert.False(result)
+}
+
+func TestValidatorAMInvalidSizeIsNot9Characters(t *testing.T) {
+
+	assert := assert.New(t)
+	validator := NewIEValidator()
+
+	validator.IE = "0105482" // Menor que 9
+	validator.UF = "AM"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado do Amazonas")
+	}
+	assert.False(result)
+
+	validator.IE = "0105482012123234243" // Maior que 9
+	validator.UF = "AM"
+
+	result, err = validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado do Amazonas")
 	}
 	assert.False(result)
 }

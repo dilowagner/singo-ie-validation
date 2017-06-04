@@ -1,12 +1,12 @@
 package validators
 
-// SC struct - Santa Catarina
+// AM struct - Amazonas
 // Implements the Validator interface
-type SC struct {
+type AM struct {
 }
 
 // IsValid func
-func (v SC) IsValid(insc string) bool {
+func (v AM) IsValid(insc string) bool {
 
 	rule := NewRule()
 
