@@ -10,7 +10,7 @@ import (
 // Constantes
 const (
 	Acre            = "AC" // AC Acre
-	Alogoas         = "AL" // AL Alogoas
+	Alagoas         = "AL" // AL Alagoas
 	Amapa           = "AP" // AP Amapá
 	Amazonas        = "AM" // AM Amazonas
 	Bahia           = "BA" // BA Bahia
@@ -66,7 +66,7 @@ func (v IEValidator) Validate() (bool, error) {
 	switch uf {
 	case Acre:
 		validator = validators.AC{}
-	case Alogoas:
+	case Alagoas:
 		validator = validators.AL{}
 	case Amapa:
 		validator = validators.AP{}
