@@ -66,6 +66,10 @@ func (v IEValidator) Validate() (bool, error) {
 	switch uf {
 	case Acre:
 		validator = validators.AC{}
+	case Alogoas:
+		validator = validators.AL{}
+	case Amapa:
+		validator = validators.AP{}
 	case SantaCatarina:
 		validator = validators.SC{}
 	case Roraima:

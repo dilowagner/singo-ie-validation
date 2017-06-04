@@ -19,17 +19,13 @@ func (v AC) IsValid(insc string) bool {
 
 	base := rule.GetBaseValue(insc, 11)
 
-	series := []int{4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2}
-	total := rule.CalculateTotal(insc, 11, series)
+	weights := []int{4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2}
+	total := rule.CalculateTotal(insc, 11, weights)
 	firstDigit := rule.GetDigit(total, 11)
 
-	series = []int{5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2}
-	total = rule.CalculateTotal(base+firstDigit, 12, series)
+	weights = []int{5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2}
+	total = rule.CalculateTotal(base+firstDigit, 12, weights)
 	secondDigit := rule.GetDigit(total, 11)
 
-	if insc != base+firstDigit+secondDigit {
-		return false
-	}
-
-	return true
+	return insc == base+firstDigit+secondDigit
 }

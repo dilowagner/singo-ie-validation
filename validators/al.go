@@ -4,13 +4,13 @@ import (
 	"strconv"
 )
 
-// RR struct - Roraima
+// AL struct - Alagoas
 // Implements the Validator interface
-type RR struct {
+type AL struct {
 }
 
 // IsValid func
-func (v RR) IsValid(insc string) bool {
+func (v AL) IsValid(insc string) bool {
 
 	rule := NewRule()
 	if !rule.IsCorrectSize(insc, 9) {
@@ -21,12 +21,17 @@ func (v RR) IsValid(insc string) bool {
 		return false
 	}
 
-	weights := []int{1, 2, 3, 4, 5, 6, 7, 8}
-	total := rule.CalculateTotal(insc, 8, weights)
-
-	verifier := rule.CalculateMod(total, 9)
-	digit := strconv.Itoa(verifier)
 	base := rule.GetBaseValue(insc, 0)
+
+	weights, _ := rule.GetWeight(9, 2)
+	total := rule.CalculateTotal(insc, 8, weights)
+	calc := total * 10
+	rest := calc - ((calc / 11) * 11)
+
+	var digit = "0"
+	if rest != 10 {
+		digit = strconv.Itoa(rest)
+	}
 
 	return insc == base+digit
 }

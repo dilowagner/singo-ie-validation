@@ -32,12 +32,12 @@ func (r *Rules) IsStartWith(insc string, value string) bool {
 	return insc[:len(value)] == value
 }
 
-// MountSeries function
-func (r *Rules) MountSeries(start int, end int) ([]int, error) {
+// GetWeight function
+func (r *Rules) GetWeight(start int, end int) ([]int, error) {
 
 	var slice []int
 	if start < end {
-		panic("Para montar as series o valor inicial não pode ser menor que o final.")
+		panic("Para montar os pesos o valor inicial não pode ser menor que o final.")
 	}
 
 	for start >= end {
@@ -47,10 +47,11 @@ func (r *Rules) MountSeries(start int, end int) ([]int, error) {
 	return slice, nil
 }
 
-// GetVerifierDigit function
-func (r *Rules) GetVerifierDigit(insc string) string {
+// Between function
+func (r *Rules) Between(base string, inf, sup int) bool {
 
-	return insc[len(insc)-1 : len(insc)]
+	var value, _ = strconv.Atoi(base)
+	return value >= inf && value <= sup
 }
 
 // SliceValues function
@@ -76,19 +77,19 @@ func (r *Rules) CalculateMod(total, divisor int) int {
 }
 
 // CalculateTotal function
-func (r *Rules) CalculateTotal(insc string, baseSize int, series []int) int {
+func (r *Rules) CalculateTotal(insc string, baseSize int, weights []int) int {
 
 	digits := r.SliceValues(insc, baseSize)
 
 	var total int
 	for index, digit := range digits {
 
-		if index == len(series) {
+		if index == len(weights) {
 			break
 		}
 
 		current, _ := strconv.Atoi(digit)
-		total = total + series[index]*current
+		total = total + weights[index]*current
 	}
 
 	return total
@@ -110,8 +111,8 @@ func (r *Rules) GetDigit(total, divisor int) string {
 // ValidateDefaultRule function
 func (r *Rules) ValidateDefaultRule(insc string, baseSize int, divisor int) bool {
 
-	series, _ := r.MountSeries(9, 2)
-	var total = r.CalculateTotal(insc, baseSize, series)
+	weights, _ := r.GetWeight(9, 2)
+	var total = r.CalculateTotal(insc, baseSize, weights)
 	if total == 0 {
 		return false
 	}
