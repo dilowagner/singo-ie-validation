@@ -46,7 +46,7 @@ func TestValidatorACInvalidSizeIsNot13Characters(t *testing.T) {
 
 	result, err := validator.Validate()
 	if err != nil {
-		t.Error("Erro na validacao do estado do Acre")
+		t.Error("Erro na validacao do tamanho do estado do Acre")
 	}
 	assert.False(result)
 
@@ -55,7 +55,7 @@ func TestValidatorACInvalidSizeIsNot13Characters(t *testing.T) {
 
 	result, err = validator.Validate()
 	if err != nil {
-		t.Error("Erro na validacao do estado do Acre")
+		t.Error("Erro na validacao do tamanho do estado do Acre")
 	}
 	assert.False(result)
 }
@@ -70,7 +70,7 @@ func TestValidatorACInvalidNotStartWith01(t *testing.T) {
 
 	result, err := validator.Validate()
 	if err != nil {
-		t.Error("Erro na validacao do estado do Acre")
+		t.Error("Erro na validacao do inicio do estado do Acre")
 	}
 	assert.False(result)
 }
@@ -115,7 +115,7 @@ func TestValidatorACInvalidSizeIsNot9Characters(t *testing.T) {
 
 	result, err := validator.Validate()
 	if err != nil {
-		t.Error("Erro na validacao do estado de Alagoas")
+		t.Error("Erro na validacao do tamanho do estado de Alagoas")
 	}
 	assert.False(result)
 
@@ -124,7 +124,7 @@ func TestValidatorACInvalidSizeIsNot9Characters(t *testing.T) {
 
 	result, err = validator.Validate()
 	if err != nil {
-		t.Error("Erro na validacao do estado de Alagoas")
+		t.Error("Erro na validacao do tamanho do estado de Alagoas")
 	}
 	assert.False(result)
 }
@@ -139,7 +139,94 @@ func TestValidatorACInvalidNotStartWith24(t *testing.T) {
 
 	result, err := validator.Validate()
 	if err != nil {
-		t.Error("Erro na validacao do estado de Alagoas")
+		t.Error("Erro na validacao do inicio do estado de Alagoas")
+	}
+	assert.False(result)
+}
+
+func TestValidatorAPValid(t *testing.T) {
+
+	assert := assert.New(t)
+	validator := NewIEValidator()
+
+	validator.IE = "032277393" // Valido
+	validator.UF = "AP"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Amapá")
+	}
+	assert.True(result)
+
+	validator.IE = "038126273" // Valido
+	validator.UF = "AP"
+
+	result, err = validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Amapá")
+	}
+	assert.True(result)
+
+	validator.IE = "030141163" // Valido
+	validator.UF = "AP"
+
+	result, err = validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Amapá")
+	}
+	assert.True(result)
+}
+
+func TestValidatorAPInvalid(t *testing.T) {
+
+	assert := assert.New(t)
+	validator := NewIEValidator()
+
+	validator.IE = "032278393" // Invalido
+	validator.UF = "AP"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Amapá")
+	}
+	assert.False(result)
+}
+
+func TestValidatorAPInvalidSizeIsNot9Characters(t *testing.T) {
+
+	assert := assert.New(t)
+	validator := NewIEValidator()
+
+	validator.IE = "0105482" // Menor que 9
+	validator.UF = "AP"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho estado do Amapá")
+	}
+	assert.False(result)
+
+	validator.IE = "0105482012123234243" // Maior que 9
+	validator.UF = "AP"
+
+	result, err = validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho estado do Amapá")
+	}
+	assert.False(result)
+}
+
+func TestValidatorAPInvalidNotStartWith03(t *testing.T) {
+
+	assert := assert.New(t)
+	validator := NewIEValidator()
+
+	validator.IE = "1100482300112" // Não começa com 03
+	validator.UF = "AP"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do inicio do estado do Amapá")
 	}
 	assert.False(result)
 }
