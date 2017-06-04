@@ -37,7 +37,7 @@ func (r *Rules) MountSeries(start int, end int) ([]int, error) {
 
 	var slice []int
 	if start < end {
-		panic("The start parameter is minus that end")
+		panic("Para montar as series o valor inicial não pode ser menor que o final.")
 	}
 
 	for start >= end {
@@ -69,14 +69,16 @@ func (r *Rules) GetBaseValue(insc string, quantity int) string {
 	return insc[:quantity]
 }
 
-// CalculateByMod function
-func (r *Rules) CalculateByMod(total, divisor int) int {
+// CalculateMod function
+func (r *Rules) CalculateMod(total, divisor int) int {
 
-	return divisor - (total % divisor)
+	return (total % divisor)
 }
 
 // CalculateTotal function
-func (r *Rules) CalculateTotal(digits []string, series []int) int {
+func (r *Rules) CalculateTotal(insc string, baseSize int, series []int) int {
+
+	digits := r.SliceValues(insc, baseSize)
 
 	var total int
 	for index, digit := range digits {
@@ -92,29 +94,31 @@ func (r *Rules) CalculateTotal(digits []string, series []int) int {
 	return total
 }
 
-// ValidateDefaultRule function
-func (r *Rules) ValidateDefaultRule(insc string, size int, divisor int, series ...int) bool {
+// GetDigit function
+func (r *Rules) GetDigit(total, divisor int) string {
 
-	if len(series) == 0 {
-		series, _ = r.MountSeries(9, 2)
+	var digit = "0"
+	mod := r.CalculateMod(total, divisor)
+	if mod >= 2 {
+		result := divisor - mod
+		digit = strconv.Itoa(result)
 	}
 
-	digits := r.SliceValues(insc, size)
+	return digit
+}
 
-	var total = r.CalculateTotal(digits, series)
+// ValidateDefaultRule function
+func (r *Rules) ValidateDefaultRule(insc string, baseSize int, divisor int) bool {
+
+	series, _ := r.MountSeries(9, 2)
+	var total = r.CalculateTotal(insc, baseSize, series)
 	if total == 0 {
 		return false
 	}
 
-	var verifier string
-	result := r.CalculateByMod(total, divisor)
-	if result >= 2 {
-		verifier = r.GetVerifierDigit(insc)
-	}
-
-	base := r.GetBaseValue(insc, 0)
-
-	if insc != base+verifier {
+	var base = r.GetBaseValue(insc, 0)
+	var digit = r.GetDigit(total, divisor)
+	if insc != base+digit {
 		return false
 	}
 

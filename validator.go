@@ -64,12 +64,14 @@ func (v IEValidator) Validate() (bool, error) {
 	uf := strings.ToUpper(v.UF)
 
 	switch uf {
+	case Acre:
+		validator = validators.AC{}
 	case SantaCatarina:
 		validator = validators.SC{}
 	case Roraima:
 		validator = validators.RR{}
 	default:
-		panic("Invalid state name")
+		panic("UF inválida, verifique o estado passado por parâmetro!")
 	}
 
 	return validator.IsValid(insc), nil

@@ -1,6 +1,10 @@
 package validators
 
-// RR struct - Santa Catarina
+import (
+	"strconv"
+)
+
+// RR struct - Roraima
 // Implements the Validator interface
 type RR struct {
 }
@@ -17,5 +21,16 @@ func (v RR) IsValid(insc string) bool {
 		return false
 	}
 
-	return rule.ValidateDefaultRule(insc, 8, 9, 9, 8, 7)
+	series := []int{1, 2, 3, 4, 5, 6, 7, 8}
+	total := rule.CalculateTotal(insc, 8, series)
+
+	verifier := rule.CalculateMod(total, 9)
+	digit := strconv.Itoa(verifier)
+	base := rule.GetBaseValue(insc, 0)
+
+	if insc != base+digit {
+		return false
+	}
+
+	return true
 }
