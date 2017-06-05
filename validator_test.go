@@ -483,3 +483,57 @@ func TestValidatorDFInvalidSizeIsNot13Characters(t *testing.T) {
 	}
 	assert.False(t, result)
 }
+
+/**************************************************************
+ * ESPIRITO SANTO
+ *************************************************************/
+func TestValidatorESValid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "109702794" // Valido
+	validator.UF = "ES"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Espirito Santo")
+	}
+	assert.True(t, result)
+}
+
+func TestValidatorESInvalid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "103702794" // Invalido
+	validator.UF = "ES"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Espirito Santo")
+	}
+	assert.False(t, result)
+}
+
+func TestValidatorESInvalidSizeIsNot9Characters(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "0105482" // Menor que 9
+	validator.UF = "ES"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado do Espirito Santo")
+	}
+	assert.False(t, result)
+
+	validator.IE = "0105482012123234243" // Maior que 9
+	validator.UF = "ES"
+
+	result, err = validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado do Espirito Santo")
+	}
+	assert.False(t, result)
+}
