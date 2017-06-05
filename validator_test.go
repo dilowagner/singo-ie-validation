@@ -361,3 +361,71 @@ func TestValidatorAMInvalidSizeIsNot9Or8Characters(t *testing.T) {
 	}
 	assert.False(t, result)
 }
+
+/**************************************************************
+ * CEARÁ
+ *************************************************************/
+func TestValidatorCEValid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "060000015" // Valido
+	validator.UF = "CE"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Ceará")
+	}
+	assert.True(t, result)
+}
+
+func TestValidatorCEInvalid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "068156310" // Invalido
+	validator.UF = "CE"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Ceará")
+	}
+	assert.False(t, result)
+}
+
+func TestValidatorCEInvalidNotStartWith06(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "1100482300112" // Não começa com 06
+	validator.UF = "CE"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do inicio do estado do Ceará")
+	}
+	assert.False(t, result)
+}
+
+func TestValidatorCEInvalidSizeIsNot9Characters(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "0105482" // Menor que 9
+	validator.UF = "CE"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado do Ceará")
+	}
+	assert.False(t, result)
+
+	validator.IE = "0105482012123234243" // Maior que 9
+	validator.UF = "CE"
+
+	result, err = validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado do Ceará")
+	}
+	assert.False(t, result)
+}
