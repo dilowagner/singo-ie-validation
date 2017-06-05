@@ -78,6 +78,8 @@ func (v IEValidator) Validate() (bool, error) {
 		validator = validators.BA{}
 	case Ceara:
 		validator = validators.CE{}
+	case DistritoFederal:
+		validator = validators.DF{}
 	case SantaCatarina:
 		validator = validators.SC{}
 	case Roraima:

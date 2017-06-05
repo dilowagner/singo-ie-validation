@@ -429,3 +429,57 @@ func TestValidatorCEInvalidSizeIsNot9Characters(t *testing.T) {
 	}
 	assert.False(t, result)
 }
+
+/**************************************************************
+ * DISTRITO FEDERAL
+ *************************************************************/
+func TestValidatorDFValid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "0799616600104" // Valido
+	validator.UF = "DF"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Distrito Federal")
+	}
+	assert.True(t, result)
+}
+
+func TestValidatorDFInvalid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "0774761700115" // Invalido
+	validator.UF = "DF"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Distrito Federal")
+	}
+	assert.False(t, result)
+}
+
+func TestValidatorDFInvalidSizeIsNot13Characters(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "0105482" // Menor que 13
+	validator.UF = "DF"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado do Distrito Federal")
+	}
+	assert.False(t, result)
+
+	validator.IE = "0105482012123234243" // Maior que 13
+	validator.UF = "DF"
+
+	result, err = validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado do Distrito Federal")
+	}
+	assert.False(t, result)
+}
