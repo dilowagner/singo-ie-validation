@@ -2,6 +2,8 @@
 
 ### Biblioteca para validação das inscrições dos estados brasileiros.
 
+Validações implementadas de acordo com o [manual do Sintegra](http://www.sintegra.gov.br/insc_est.html).
+
 ## Instalando
 Para utilizar no seu projeto basta executar o seguinte comando
 
