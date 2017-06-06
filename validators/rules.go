@@ -117,9 +117,6 @@ func (r *Rules) ValidateDefaultRule(insc string, baseSize int, divisor int) bool
 
 	var base = r.GetBaseValue(insc, 0)
 	var digit = r.GetDigit(total, divisor)
-	if insc != base+digit {
-		return false
-	}
 
-	return true
+	return insc == base+digit
 }
