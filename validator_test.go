@@ -537,3 +537,71 @@ func TestValidatorESInvalidSizeIsNot9Characters(t *testing.T) {
 	}
 	assert.False(t, result)
 }
+
+/**************************************************************
+ * GOAIS
+ *************************************************************/
+func TestValidatorGOValid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "10.360.235-6" // Valido
+	validator.UF = "GO"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado de Goias")
+	}
+	assert.True(t, result)
+}
+
+func TestValidatorGOInvalid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "103702794" // Invalido
+	validator.UF = "GO"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado de Goias")
+	}
+	assert.False(t, result)
+}
+
+func TestValidatorGOInvalidSizeIsNot9Characters(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "0105482" // Menor que 9
+	validator.UF = "GO"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado de Goias")
+	}
+	assert.False(t, result)
+
+	validator.IE = "0105482012123234243" // Maior que 9
+	validator.UF = "GO"
+
+	result, err = validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado de Goias")
+	}
+	assert.False(t, result)
+}
+
+func TestValidatorGOInvalidNotStartWith10Or11Or15(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "090048230" // Não começa com 10, 11 ou 15
+	validator.UF = "GO"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do inicio do estado de Goias")
+	}
+	assert.False(t, result)
+}
