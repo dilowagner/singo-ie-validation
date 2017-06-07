@@ -673,3 +673,57 @@ func TestValidatorMAInvalidNotStartWith12(t *testing.T) {
 	}
 	assert.False(t, result)
 }
+
+/**************************************************************
+ * MATO GROSSO
+ *************************************************************/
+func TestValidatorMTValid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "4712310904-0" // Valido
+	validator.UF = "MT"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Mato Grosso")
+	}
+	assert.True(t, result)
+}
+
+func TestValidatorMTInvalid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "0013245101-9" // Invalido
+	validator.UF = "MT"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Mato Grosso")
+	}
+	assert.False(t, result)
+}
+
+func TestValidatorMTInvalidSizeIsNot9Characters(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "0105482" // Menor que 9
+	validator.UF = "MT"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado do Mato Grosso")
+	}
+	assert.False(t, result)
+
+	validator.IE = "0105482012123234243" // Maior que 9
+	validator.UF = "MT"
+
+	result, err = validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado do Mato Grosso")
+	}
+	assert.False(t, result)
+}
