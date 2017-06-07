@@ -605,3 +605,71 @@ func TestValidatorGOInvalidNotStartWith10Or11Or15(t *testing.T) {
 	}
 	assert.False(t, result)
 }
+
+/**************************************************************
+ * MARANHÃO
+ *************************************************************/
+func TestValidatorMAValid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "12071790-5" // Valido
+	validator.UF = "MA"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Maranhao")
+	}
+	assert.True(t, result)
+}
+
+func TestValidatorMAInvalid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "12081790-5" // Invalido
+	validator.UF = "MA"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Maranhao")
+	}
+	assert.False(t, result)
+}
+
+func TestValidatorMAInvalidSizeIsNot9Characters(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "0105482" // Menor que 9
+	validator.UF = "MA"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado do Maranhao")
+	}
+	assert.False(t, result)
+
+	validator.IE = "0105482012123234243" // Maior que 9
+	validator.UF = "MA"
+
+	result, err = validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado do Maranhao")
+	}
+	assert.False(t, result)
+}
+
+func TestValidatorMAInvalidNotStartWith12(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "090048230" // Não começa com 12
+	validator.UF = "MA"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do inicio do estado do Maranhao")
+	}
+	assert.False(t, result)
+}
