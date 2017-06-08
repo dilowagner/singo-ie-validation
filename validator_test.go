@@ -339,7 +339,7 @@ func TestValidatorBAInvalid(t *testing.T) {
 	assert.False(t, result)
 }
 
-func TestValidatorAMInvalidSizeIsNot9Or8Characters(t *testing.T) {
+func TestValidatorBAInvalidSizeIsNot9Or8Characters(t *testing.T) {
 
 	validator := NewIEValidator()
 
@@ -769,6 +769,37 @@ func TestValidatorMSInvalidNotStartWith28(t *testing.T) {
 	result, err := validator.Validate()
 	if err != nil {
 		t.Error("Erro na validacao do inicio do estado do Mato Grosso do Sul")
+	}
+	assert.False(t, result)
+}
+
+/**************************************************************
+ * MINAS GERAIS
+ *************************************************************/
+func TestValidatorMGValid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "4125777935912" // Valido
+	validator.UF = "MG"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado de Minas Gerais")
+	}
+	assert.True(t, result)
+}
+
+func TestValidatorMGInvalid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "0623039140081" // Invalido
+	validator.UF = "MG"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado de Minas Gerais")
 	}
 	assert.False(t, result)
 }
