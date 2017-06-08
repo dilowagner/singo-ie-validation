@@ -803,3 +803,71 @@ func TestValidatorMGInvalid(t *testing.T) {
 	}
 	assert.False(t, result)
 }
+
+/**************************************************************
+ * PARÁ
+ *************************************************************/
+func TestValidatorPAValid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "153026650" // Valido
+	validator.UF = "PA"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Para")
+	}
+	assert.True(t, result)
+}
+
+func TestValidatorPAInvalid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "152036650" // Invalido
+	validator.UF = "PA"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Para")
+	}
+	assert.False(t, result)
+}
+
+func TestValidatorPAInvalidSizeIsNot9Characters(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "0105482" // Menor que 9
+	validator.UF = "PA"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado do Para")
+	}
+	assert.False(t, result)
+
+	validator.IE = "0105482012123234243" // Maior que 9
+	validator.UF = "PA"
+
+	result, err = validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado do Para")
+	}
+	assert.False(t, result)
+}
+
+func TestValidatorPAInvalidNotStartWith15(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "090048230" // Não começa com 15
+	validator.UF = "PA"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do inicio do estado do Para")
+	}
+	assert.False(t, result)
+}
