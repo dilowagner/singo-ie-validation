@@ -871,3 +871,57 @@ func TestValidatorPAInvalidNotStartWith15(t *testing.T) {
 	}
 	assert.False(t, result)
 }
+
+/**************************************************************
+ * PARAIBA
+ *************************************************************/
+func TestValidatorPBValid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "35169538-9" // Valido
+	validator.UF = "PB"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado da Paraiba")
+	}
+	assert.True(t, result)
+}
+
+func TestValidatorPBInvalid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "25169533-9" // Invalido
+	validator.UF = "PB"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado da Paraiba")
+	}
+	assert.False(t, result)
+}
+
+func TestValidatorPBInvalidSizeIsNot9Characters(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "0105482" // Menor que 9
+	validator.UF = "PB"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado da Paraiba")
+	}
+	assert.False(t, result)
+
+	validator.IE = "0105482012123234243" // Maior que 9
+	validator.UF = "PB"
+
+	result, err = validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado da Paraiba")
+	}
+	assert.False(t, result)
+}
