@@ -1268,3 +1268,48 @@ func TestValidatorRSInvalidSizeIsNot10Characters(t *testing.T) {
 	}
 	assert.False(t, result)
 }
+
+/**************************************************************
+ * RONDONIA
+ *************************************************************/
+func TestValidatorROValid9Digits(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "101625213" // Valido
+	validator.UF = "RO"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado de Rondonia")
+	}
+	assert.True(t, result)
+}
+
+func TestValidatorROValid14Digits(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "78139143706338" // Valido
+	validator.UF = "RO"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado de Rondonia")
+	}
+	assert.True(t, result)
+}
+
+func TestValidatorROInvalid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "18129163706338" // Invalido
+	validator.UF = "RO"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado de Rondonia")
+	}
+	assert.False(t, result)
+}
