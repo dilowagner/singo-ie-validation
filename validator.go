@@ -102,6 +102,8 @@ func (v IEValidator) Validate() (bool, error) {
 		validator = validators.PE{}
 	case Piaui:
 		validator = validators.PI{}
+	case RioJaneiro:
+		validator = validators.RJ{}
 	case SantaCatarina:
 		validator = validators.SC{}
 	case Roraima:
