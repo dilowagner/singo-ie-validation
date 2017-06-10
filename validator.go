@@ -61,8 +61,7 @@ func (v IEValidator) Validate() (bool, error) {
 
 	var validator validators.Validatable
 
-	regex := regexp.MustCompile("\\D")
-	insc := regex.ReplaceAllString(strings.TrimSpace(v.IE), "")
+	insc := v.filter(v.IE)
 	uf := strings.ToUpper(v.UF)
 
 	switch uf {
@@ -114,6 +113,8 @@ func (v IEValidator) Validate() (bool, error) {
 		validator = validators.RR{}
 	case SantaCatarina:
 		validator = validators.SC{}
+	case SaoPaulo:
+		validator = validators.SP{}
 	case Sergipe:
 		validator = validators.SE{}
 	case Tocantins:
@@ -123,4 +124,10 @@ func (v IEValidator) Validate() (bool, error) {
 	}
 
 	return validator.IsValid(insc), nil
+}
+
+func (v IEValidator) filter(ie string) string {
+
+	regex, _ := regexp.Compile("[^P0-9]+")
+	return regex.ReplaceAllString(strings.TrimSpace(strings.ToUpper(v.IE)), "")
 }

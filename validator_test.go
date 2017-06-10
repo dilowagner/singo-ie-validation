@@ -1369,6 +1369,37 @@ func TestValidatorSCInvalidSizeIsNot9Characters(t *testing.T) {
 }
 
 /**************************************************************
+ * SÃO PAULO
+ *************************************************************/
+func TestValidatorSPValid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "394505080693" // Valido
+	validator.UF = "SP"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado de São Paulo")
+	}
+	assert.True(t, result)
+}
+
+func TestValidatorSPValidWithPLetter(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "P-01100424.3/002" // Valido
+	validator.UF = "SP"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado de São Paulo")
+	}
+	assert.True(t, result)
+}
+
+/**************************************************************
  * SERGIPE
  *************************************************************/
 func TestValidatorSEValid(t *testing.T) {
