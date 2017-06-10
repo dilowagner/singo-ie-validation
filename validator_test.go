@@ -1313,3 +1313,111 @@ func TestValidatorROInvalid(t *testing.T) {
 	}
 	assert.False(t, result)
 }
+
+/**************************************************************
+ * SANTA CATARINA
+ *************************************************************/
+func TestValidatorSCValid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "705271927" // Valido
+	validator.UF = "SC"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado de Santa Catarina")
+	}
+	assert.True(t, result)
+}
+
+func TestValidatorSCInvalid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "305175927" // Invalido
+	validator.UF = "SC"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado de Santa Catarina")
+	}
+	assert.False(t, result)
+}
+
+func TestValidatorSCInvalidSizeIsNot9Characters(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "0105482" // Menor que 9
+	validator.UF = "SC"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado de Santa Catarina")
+	}
+	assert.False(t, result)
+
+	validator.IE = "0105482012123234243" // Maior que 9
+	validator.UF = "SC"
+
+	result, err = validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado de Santa Catarina")
+	}
+	assert.False(t, result)
+}
+
+/**************************************************************
+ * SERGIPE
+ *************************************************************/
+func TestValidatorSEValid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "606799737" // Valido
+	validator.UF = "SE"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado de Sergipe")
+	}
+	assert.True(t, result)
+}
+
+func TestValidatorSEInvalid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "506499717" // Invalido
+	validator.UF = "SE"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado de Sergipe")
+	}
+	assert.False(t, result)
+}
+
+func TestValidatorSEInvalidSizeIsNot9Characters(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "0105482" // Menor que 9
+	validator.UF = "SE"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado de Sergipe")
+	}
+	assert.False(t, result)
+
+	validator.IE = "0105482012123234243" // Maior que 9
+	validator.UF = "SE"
+
+	result, err = validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado de Sergipe")
+	}
+	assert.False(t, result)
+}
