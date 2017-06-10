@@ -16,11 +16,11 @@ func (v PE) IsValid(insc string) bool {
 
 	base := rule.GetBaseValue(insc, 7)
 
-	weights, _ := rule.GetWeight(8, 2)
+	weights := rule.GetWeight(8, 7)
 	total := rule.CalculateTotal(insc, 8, weights)
 	var firstDigit = rule.GetDigit(total, 11)
 
-	weights, _ = rule.GetWeight(9, 2)
+	weights = rule.GetWeight(9, 8)
 	total = rule.CalculateTotal(base+firstDigit, 8, weights)
 	var secondDigit = rule.GetDigit(total, 11)
 

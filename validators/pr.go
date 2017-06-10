@@ -19,18 +19,26 @@ func (v PR) IsValid(insc string) bool {
 	}
 
 	base := rule.GetBaseValue(insc, 8)
-
-	weights := []int{3, 2, 7, 6, 5, 4, 3, 2}
-	var firstDigit = v.getSpecifDigit(rule, insc, weights)
-
-	weights = []int{4, 3, 2, 7, 6, 5, 4, 3, 2}
-	var secondDigit = v.getSpecifDigit(rule, base+firstDigit, weights)
+	//{3, 2, 7, 6, 5, 4, 3, 2}
+	var firstDigit = v.getSpecifDigit(rule, insc)
+	//{4, 3, 2, 7, 6, 5, 4, 3, 2}
+	var secondDigit = v.getSpecifDigit(rule, base+firstDigit)
 
 	return insc == base+firstDigit+secondDigit
 }
 
-func (v PR) getSpecifDigit(rule Rules, insc string, weights []int) string {
+func (v PR) getSpecifDigit(rule Rules, insc string) string {
 
+	size := len(insc) - 2
+	var s []int
+	if size == 8 {
+		s = []int{3, 2}
+	} else {
+		s = []int{4, 3, 2}
+	}
+	w := rule.GetWeight(7, 6)
+
+	weights := append(s, w...)
 	total := rule.CalculateTotal(insc, 9, weights)
 	mod := rule.CalculateMod(total, 11)
 

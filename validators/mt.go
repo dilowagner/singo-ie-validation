@@ -16,7 +16,8 @@ func (v MT) IsValid(insc string) bool {
 
 	base := rule.GetBaseValue(insc, 10)
 
-	weights := []int{3, 2, 9, 8, 7, 6, 5, 4, 3, 2}
+	//{3, 2, 9, 8, 7, 6, 5, 4, 3, 2}
+	weights := rule.GetWeight(3, 10)
 	total := rule.CalculateTotal(insc, 11, weights)
 	digit := rule.GetDigit(total, 11)
 

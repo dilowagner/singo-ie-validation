@@ -28,11 +28,11 @@ func (v BA) IsValid(insc string) bool {
 		mod = 11
 	}
 
-	fWeights, _ := rule.GetWeight(lengthCalc, 2)
+	fWeights := rule.GetWeight(lengthCalc, 6)
 	total := rule.CalculateTotal(insc, lengthCalc, fWeights)
 	firstDigit := rule.GetDigit(total, mod)
 
-	sWeights, _ := rule.GetWeight(lengthCalc+1, 2)
+	sWeights := rule.GetWeight(lengthCalc+1, 7)
 	total = rule.CalculateTotal(base[:lengthCalc-1]+firstDigit, lengthCalc, sWeights)
 	secondDigit := rule.GetDigit(total, mod)
 

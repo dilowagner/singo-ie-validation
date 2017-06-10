@@ -23,7 +23,7 @@ func (v AL) IsValid(insc string) bool {
 
 	base := rule.GetBaseValue(insc, 0)
 
-	weights, _ := rule.GetWeight(9, 2)
+	weights := rule.GetWeight(9, 8)
 	total := rule.CalculateTotal(insc, 8, weights)
 	calc := total * 10
 	rest := calc - ((calc / 11) * 11)

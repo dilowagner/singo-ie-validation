@@ -37,7 +37,7 @@ func (v AP) IsValid(insc string) bool {
 		d = "0"
 	}
 
-	weights, _ := rule.GetWeight(9, 2)
+	weights := rule.GetWeight(9, 8)
 	total := p + rule.CalculateTotal(base, 8, weights)
 	rest := rule.CalculateMod(total, 11)
 

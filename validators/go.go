@@ -28,7 +28,7 @@ func (v GO) IsValid(insc string) bool {
 		return udigit == "1" || udigit == "0"
 	}
 
-	weights, _ := rule.GetWeight(9, 2)
+	weights := rule.GetWeight(9, 8)
 	total := rule.CalculateTotal(insc, 8, weights)
 	rest := rule.CalculateMod(total, 11)
 	var digit string

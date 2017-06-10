@@ -33,18 +33,19 @@ func (r *Rules) IsStartWith(insc string, value string) bool {
 }
 
 // GetWeight function
-func (r *Rules) GetWeight(start int, end int) ([]int, error) {
+func (r *Rules) GetWeight(start int, size int) []int {
 
 	var slice []int
-	if start < end {
-		panic("Para montar os pesos o valor inicial não pode ser menor que o final.")
-	}
-
-	for start >= end {
+	var i int
+	for i < size {
 		slice = append(slice, start)
+		if start == 2 {
+			start = 10
+		}
 		start--
+		i++
 	}
-	return slice, nil
+	return slice
 }
 
 // Between function
@@ -109,7 +110,7 @@ func (r *Rules) GetDigit(total, divisor int) string {
 // ValidateDefaultRule function
 func (r *Rules) ValidateDefaultRule(insc string, baseSize int, divisor int) bool {
 
-	weights, _ := r.GetWeight(9, 2)
+	weights := r.GetWeight(9, 8)
 	var total = r.CalculateTotal(insc, baseSize, weights)
 	if total == 0 {
 		return false

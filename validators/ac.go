@@ -19,11 +19,13 @@ func (v AC) IsValid(insc string) bool {
 
 	base := rule.GetBaseValue(insc, 11)
 
-	weights := []int{4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2}
+	//{4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2}
+	weights := rule.GetWeight(4, 11)
 	total := rule.CalculateTotal(insc, 11, weights)
 	firstDigit := rule.GetDigit(total, 11)
 
-	weights = []int{5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2}
+	//{5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2}
+	weights = rule.GetWeight(5, 12)
 	total = rule.CalculateTotal(base+firstDigit, 12, weights)
 	secondDigit := rule.GetDigit(total, 11)
 
