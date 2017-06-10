@@ -925,3 +925,57 @@ func TestValidatorPBInvalidSizeIsNot9Characters(t *testing.T) {
 	}
 	assert.False(t, result)
 }
+
+/**************************************************************
+ * PARANA
+ *************************************************************/
+func TestValidatorPRValid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "343.57482-78" // Valido
+	validator.UF = "PR"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Parana")
+	}
+	assert.True(t, result)
+}
+
+func TestValidatorPRInvalid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "2415448278" // Invalido
+	validator.UF = "PR"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Parana")
+	}
+	assert.False(t, result)
+}
+
+func TestValidatorPRInvalidSizeIsNot9Characters(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "0105482" // Menor que 9
+	validator.UF = "PR"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado do Parana")
+	}
+	assert.False(t, result)
+
+	validator.IE = "0105482012123234243" // Maior que 9
+	validator.UF = "PR"
+
+	result, err = validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado do Parana")
+	}
+	assert.False(t, result)
+}
