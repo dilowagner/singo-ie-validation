@@ -1214,3 +1214,57 @@ func TestValidatorRNInvalidNotStartWith20(t *testing.T) {
 	}
 	assert.False(t, result)
 }
+
+/**************************************************************
+ * RIO GRANDE DO SUL
+ *************************************************************/
+func TestValidatorRSValid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "1323316008" // Valido
+	validator.UF = "RS"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Rio Grande do Sul")
+	}
+	assert.True(t, result)
+}
+
+func TestValidatorRSInvalid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "1324518008" // Invalido
+	validator.UF = "RS"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Rio Grande do Sul")
+	}
+	assert.False(t, result)
+}
+
+func TestValidatorRSInvalidSizeIsNot10Characters(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "904823023" // É menor que 10
+	validator.UF = "RS"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do inicio do estado de Rio Grande do Sul")
+	}
+	assert.False(t, result)
+
+	validator.IE = "0105482012123234243" // Maior que 10
+	validator.UF = "RS"
+
+	result, err = validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado do Rio Grande do Sul")
+	}
+	assert.False(t, result)
+}
