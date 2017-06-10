@@ -1033,3 +1033,57 @@ func TestValidatorPEInvalidSizeIsNot9Characters(t *testing.T) {
 	}
 	assert.False(t, result)
 }
+
+/**************************************************************
+ * PIAUI
+ *************************************************************/
+func TestValidatorPIValid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "831353864" // Valido
+	validator.UF = "PI"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Piaui")
+	}
+	assert.True(t, result)
+}
+
+func TestValidatorPIInvalid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "820333894" // Invalido
+	validator.UF = "PI"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Piaui")
+	}
+	assert.False(t, result)
+}
+
+func TestValidatorPIInvalidSizeIsNot9Characters(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "0105482" // Menor que 9
+	validator.UF = "PI"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado do Piaui")
+	}
+	assert.False(t, result)
+
+	validator.IE = "0105482012123234243" // Maior que 9
+	validator.UF = "PI"
+
+	result, err = validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado do Piaui")
+	}
+	assert.False(t, result)
+}
