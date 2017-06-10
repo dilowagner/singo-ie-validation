@@ -1141,3 +1141,76 @@ func TestValidatorRJInvalidSizeIsNot8Characters(t *testing.T) {
 	}
 	assert.False(t, result)
 }
+
+/**************************************************************
+ * RIO GRANDE DO NORTE
+ *************************************************************/
+func TestValidatorRNValid9Digits(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "20.040.040-1" // Valido
+	validator.UF = "RN"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Rio Grande do Norte")
+	}
+	assert.True(t, result)
+}
+
+func TestValidatorRNValid10Digits(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "20.0.040.040-0" // Valido
+	validator.UF = "RN"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Rio Grande do Norte")
+	}
+	assert.True(t, result)
+}
+
+func TestValidatorRNInvalid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "2031407400" // Invalido
+	validator.UF = "RN"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Rio Grande do Norte")
+	}
+	assert.False(t, result)
+}
+
+func TestValidatorRNInvalidSizeIsNot9Or10Characters(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "9048230" // É menor que 9 ou 10
+	validator.UF = "RN"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do inicio do estado de Rio Grande do Norte")
+	}
+	assert.False(t, result)
+}
+
+func TestValidatorRNInvalidNotStartWith20(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "1131407400" // Não começa com 20
+	validator.UF = "RN"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do inicio do estado do Rio Grande do Norte")
+	}
+	assert.False(t, result)
+}
