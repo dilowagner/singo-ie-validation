@@ -110,12 +110,14 @@ func (v IEValidator) Validate() (bool, error) {
 		validator = validators.RS{}
 	case Rondonia:
 		validator = validators.RO{}
+	case Roraima:
+		validator = validators.RR{}
 	case SantaCatarina:
 		validator = validators.SC{}
 	case Sergipe:
 		validator = validators.SE{}
-	case Roraima:
-		validator = validators.RR{}
+	case Tocantins:
+		validator = validators.TO{}
 	default:
 		return false, errors.New("UF inválida, verifique o estado passado por parâmetro!")
 	}

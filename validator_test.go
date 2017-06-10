@@ -1421,3 +1421,57 @@ func TestValidatorSEInvalidSizeIsNot9Characters(t *testing.T) {
 	}
 	assert.False(t, result)
 }
+
+/**************************************************************
+ * TOCANTINS
+ *************************************************************/
+func TestValidatorTOValid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "59035149065" // Valido
+	validator.UF = "TO"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Tocantins")
+	}
+	assert.True(t, result)
+}
+
+func TestValidatorTOInvalid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "29825149065" // Invalido
+	validator.UF = "TO"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado do Tocantins")
+	}
+	assert.False(t, result)
+}
+
+func TestValidatorTOInvalidSizeIsNot9Or11Characters(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "0105482" // Menor que 9 ou 11
+	validator.UF = "TO"
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado do Tocantins")
+	}
+	assert.False(t, result)
+
+	validator.IE = "0105482012123234243" // Maior que 9 ou 11
+	validator.UF = "TO"
+
+	result, err = validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do tamanho do estado do Tocantins")
+	}
+	assert.False(t, result)
+}
