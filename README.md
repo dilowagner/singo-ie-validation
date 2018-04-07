@@ -57,5 +57,10 @@ Basta clonar o projeto e rodar o comando:
 ## Utilização
 Para utilizar esta biblioteca, você pode usar o projeto [singo-api](https://github.com/dilowagner/singo-api), que disponibiliza uma API como um microserviço feito em Docker.
 
+
+## Contribua!
+
+Quer contribuir?
+
 ## Licença MIT
 Esta biblioteca segue os termos de uso da [MIT](https://github.com/dilowagner/singo-ie-validation/blob/master/LICENSE)
