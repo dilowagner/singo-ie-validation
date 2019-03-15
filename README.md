@@ -30,7 +30,7 @@ func main() {
 
 	validator := singo.NewIEValidator()
 
-	validator.IE = " 251.040.852" // SC - Valido
+	validator.IE = "251.040.852" // SC - Valido
 	validator.UF = "SC"
 
 	result, err := validator.Validate()
