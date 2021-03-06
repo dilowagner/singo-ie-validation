@@ -62,6 +62,9 @@ func (v IEValidator) Validate() (bool, error) {
 	var validator validators.Validatable
 
 	insc := v.filter(v.IE)
+	if len(insc) == 0 {
+		return false, errors.New("Inscrição estadual inválida")
+	}
 	uf := strings.ToUpper(v.UF)
 
 	switch uf {

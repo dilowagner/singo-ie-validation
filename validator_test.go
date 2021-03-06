@@ -1,6 +1,7 @@
 package singo
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -1505,4 +1506,55 @@ func TestValidatorTOInvalidSizeIsNot9Or11Characters(t *testing.T) {
 		t.Error("Erro na validacao do tamanho do estado do Tocantins")
 	}
 	assert.False(t, result)
+}
+
+/**************************************************************
+ * TESTES GERAIS
+ *************************************************************/
+func TestValidatorNoNumeric(t *testing.T) {
+	samples := []struct {
+		IE string
+		UF string
+	}{
+		{UF: "AC", IE: "blablabla"}, // AC Acre
+		{UF: "AL", IE: "blablabla"}, // AL Alagoas
+		{UF: "AP", IE: "blablabla"}, // AP Amapá
+		{UF: "AM", IE: "blablabla"}, // AM Amazonas
+		{UF: "BA", IE: "blablabla"}, // BA Bahia
+		{UF: "CE", IE: "blablabla"}, // CE Ceará
+		{UF: "DF", IE: "blablabla"}, // DF Distrito Federal
+		{UF: "ES", IE: "blablabla"}, // ES Espirito Santo
+		{UF: "GO", IE: "blablabla"}, // GO Goias
+		{UF: "MA", IE: "blablabla"}, // MA Maranhão
+		{UF: "MT", IE: "blablabla"}, // MT Mato Grosso
+		{UF: "MS", IE: "blablabla"}, // MS Mato Grosso do Sul
+		{UF: "MG", IE: "blablabla"}, // MG Minas Gerais
+		{UF: "PA", IE: "blablabla"}, // PA Pará
+		{UF: "PB", IE: "blablabla"}, // PB Paraíba
+		{UF: "PR", IE: "blablabla"}, // PR Paraná
+		{UF: "PE", IE: "blablabla"}, // PE Pernambuco
+		{UF: "PI", IE: "blablabla"}, // PI Piauí
+		{UF: "RJ", IE: "blablabla"}, // RJ Rio de Janeiro
+		{UF: "RN", IE: "blablabla"}, // RN Rio Grande do Norte
+		{UF: "RS", IE: "blablabla"}, // RS Rio Grande do Sul
+		{UF: "RO", IE: "blablabla"}, // RO Rondônia
+		{UF: "RR", IE: "blablabla"}, // RR Roraima
+		{UF: "SC", IE: "blablabla"}, // SC Santa Catarina
+		{UF: "SP", IE: "blablabla"}, // SP São Paulo
+		{UF: "SE", IE: "blablabla"}, // SE Sergipe
+		{UF: "TO", IE: "blablabla"}, // TO Tocantins
+	}
+
+	for i, sample := range samples {
+		t.Run(fmt.Sprintf("%d %s", i, sample.UF), func(t *testing.T) {
+			validator := NewIEValidator()
+			validator.IE = sample.IE
+			validator.UF = sample.UF
+			result, err := validator.Validate()
+			if err == nil {
+				t.Error("Erro na validação de inscrição estadual não numérica")
+			}
+			assert.False(t, result)
+		})
+	}
 }
