@@ -108,3 +108,16 @@ func (v IEValidator) getValidate() validators.IValidatable {
 		return nil
 	}
 }
+
+func (v IEValidator) GetEnumUF(uf string) validators.UFEnum {
+
+	tpUF := new(validators.UFEnum)
+
+	err := tpUF.Scan(uf)
+
+	if err != nil {
+		return validators.Undefined
+	}
+
+	return *tpUF
+}

@@ -1941,3 +1941,33 @@ func TestValidatorNoNumeric(t *testing.T) {
 		})
 	}
 }
+
+func TestIEValidator_GetEnumUFValidBySymbol(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	uf := validator.GetEnumUF("RO")
+
+	assert.Equal(t, "RO", uf.String())
+
+}
+
+func TestIEValidator_GetEnumUFValidByCodeIBGE(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	uf := validator.GetEnumUF("11")
+
+	assert.Equal(t, "RO", uf.String())
+
+}
+
+func TestIEValidator_GetEnumUFInvalid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	uf := validator.GetEnumUF("OO")
+
+	assert.Equal(t, "Undefined", uf.String())
+
+}
