@@ -1,12 +1,12 @@
 package validators
 
-// CE struct - Ceará
+// Ceara struct - Ceará
 // Implements the Validator interface
-type CE struct {
+type Ceara struct {
 }
 
 // IsValid func
-func (v CE) IsValid(insc string) bool {
+func (v Ceara) IsValid(insc string) bool {
 
 	rule := NewRule()
 

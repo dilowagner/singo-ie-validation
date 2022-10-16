@@ -1,12 +1,12 @@
 package validators
 
-// AC struct - Acre
+// Acre struct - Acre
 // Implements the Validator interface
-type AC struct {
+type Acre struct {
 }
 
 // IsValid func
-func (v AC) IsValid(insc string) bool {
+func (v Acre) IsValid(insc string) bool {
 
 	rule := NewRule()
 	if !rule.IsCorrectSize(insc, 13) {

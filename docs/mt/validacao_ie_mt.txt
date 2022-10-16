@@ -1,0 +1,21 @@
+Fonte: http://www.sintegra.gov.br/Cad_Estados/cad_MT.html
+
+GOVERNO DO ESTADO DO MATO GROSSO
+ROTEIRO DE CRÍTICA DA INSCRIÇÃO ESTADUAL
+
+Este procedimento poderá ser implementado nos aplicativos que se utilizam do número da Inscrição Estadual, evitando desta forma que sejam informados números incorretos.
+
+• FORMATO         : NNNNNNNNNN-D
+
+• CONSISTÊNCIA: Cálculo do Dígito Verificador - Módulo 11 (2 a 9, 2 a 9)
+
+• Exemplo: 0013000001-9
+                0 0 1 3 0 0 0 0 0 1
+                3 2 9 8 7 6 5 4 3 2 (Pesos)
+
+(3 x 0 + 2 x 0 + 9 x 1 + 8 x 3 + 7 x 0 + 6 x 0 + 5 x 0 + 4 x 0 + 3 x 0 + 2 x 1) = 35
+
+35 : 11 = Resto 2 => 11 - 2 = 9  DV=9
+
+OBS.: Se o resto da divisão for (0) zero ou (1) um  DV=0.
+

@@ -1,0 +1,25 @@
+Fonte: http://www.sintegra.gov.br/Cad_Estados/cad_RS.html
+
+GOVERNO DO ESTADO DO RIO GRANDE DO SUL
+ROTEIRO DE CRÍTICA DA INSCRIÇÃO ESTADUAL
+
+Formato: 3 dígitos (município) + 6 dígitos (empresa) + 1 dígito verificador
+
+Exemplo: Inscrição Estadual número 224/3658792
+
+· Despreza-se o dígito verificador, trabalhando-se somente com os demais 9 dígitos: 224365879
+
+· Atribui-se um peso a cada um dos nove dígitos seguindo a ordem abaixo:
+2 2 4 3 6 5 8 7 9
+2 9 8 7 6 5 4 3 2 pesos
+
+· Cálculo
+
+(2 x 2)  + (9 x 2) + (8  x 4) + (7 x 3)  + (6 x 6) + (5  x 5) + (4 x 8)  +
+(3 x 7) + (2 x 9) = 207
+
+· O resto da divisão entre o resultado da operação acima 207 e o módulo 11 é igual a 9
+
+· Calculamos 11, que é o módulo, menos 9, resultado obtido acima, e obtemos 2 que é o dígito verificador da Inscrição, que ficará 224365879, e nesse exemplo ela está correta.
+
+· No caso da diferença calculada no item anterior fornecer como resultado 10 ou 11, o dígito verificador será 0.

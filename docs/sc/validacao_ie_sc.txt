@@ -1,0 +1,22 @@
+Fonte: http://www.sintegra.gov.br/Cad_Estados/cad_SC.html
+
+GOVERNO DO ESTADO DE SANTA CATARINA
+ROTEIRO DE CRÍTICA DA INSCRIÇÃO ESTADUAL
+
+Exemplo: inscrição 251.040.852
+Atribui-se um peso a cada dígito da inscrição exceto o ultimo digito a direita
+2 5 1 0 4 0 8 5 (inscrição)
+
+9 8 7 6 5 4 3 2 (pesos)
+
+Cálculo:
+
+(9 x 2) + (8 x 5) + (7 x 1) + (6 x 0) + (5 x 4) + (4 x 0) +
+
+(3 x 8) + (2 x 5) = 119
+
+Divida o resultado por 11: 119 / 11 = 10 tendo o resto da divisão igual a 9
+
+Subtraia o resto da divisão (9) de 11 para obter o digito verificador: 11 – 9 = 2
+
+Obs: Quando o resto da divisão for zero (0) ou um (1), o digito será zero (0).

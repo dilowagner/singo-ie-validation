@@ -1,0 +1,16 @@
+Fonte: http://www.sintegra.gov.br/Cad_Estados/cad_RJ.html
+
+GOVERNO DO ESTADO DO RIO DE JANEIRO
+ROTEIRO DE CRÍTICA DA INSCRIÇÃO ESTADUAL
+
+ 
+
+vide imagem - validacao_ie_rj.png
+
+ 
+
+Se o resto da divisão por 11 for menor ou igual à 1 (um),
+
+Então o dígito verificador será = 0 (zero)
+
+Senão, o dígito será 11 (onze) menos o resto

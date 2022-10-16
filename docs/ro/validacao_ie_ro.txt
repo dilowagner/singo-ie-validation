@@ -1,0 +1,72 @@
+Fonte: http://www.sintegra.gov.br/Cad_Estados/cad_RO.html
+
+GOVERNO DO ESTADO DE RONDÔNIA
+ROTEIRO DE CRÍTICA DA INSCRIÇÃO ESTADUAL
+
+Fórmula do cálculo do dígito verificador da inscrição estadual
+
+1. Fórmula adotada antes de 01/08/2000
+Formato: 3 dígitos (município) + 5 dígitos (empresa) +1 dígito verificador
+
+Exemplo: Inscrição Estadual número 101.62521-3
+
+ 
+
+
+· Despreza-se os três primeiros dígitos (101 nesse caso, indicando Porto Velho), assim como o dígito verificador,trabalhando-se somente com os cinco dígitos indicadores da empresa: 62521
+
+
+· Atribui-se um peso a cada um dos cinco dígitos da empresa seguindo a ordem abaixo:
+6 2 5 2 1
+6 5 4 3 2 pesos
+
+· Cálculo:
+(6 x 6) + (5 x 2) +  (4 x 5) + (3 x 2) + (2 x 1) = 74
+
+· O resto da divisão entre o resultado da operação acima 74 e o módulo 11 é igual a 8
+
+· Calculamos 11, que é o módulo, menos 8, resultado obtido acima, dá igual a 3 que é o dígito verificador da Inscrição 101.62521
+
+· No caso da diferença calculada no parágrafo anterior fornecer como resultado 10 ou 11, subtrai-se 10 da mesma para obter o dígito verificador.  
+
+2. Fórmula adotada a partir de 01/08/2000
+Formato: 13 dígitos (empresa) + 1 dígito verificador
+
+O código de município não faz mais parte da Inscrição Estadual.
+
+2.1 As empresas existentes antes de 31/07/2000 terão sua Inscrição Estadual alterada da seguinte forma:
+
+Retira-se o código de município;
+
+Acrescenta-se zeros à esquerda aos antigos 5 dígitos identificadores da empresa, até chegar a 13 dígitos;
+
+Conserva-se o dígito verificador antigo, que continua sendo válido na nova fórmula. 
+
+Exemplo: Inscrição Estadual anterior número 101.62521-3, passa a ser 0000000062521-3. 
+
+2.2 As Inscrições Estaduais concedidas a partir de 24/07/2000 já estão sendo feitas de acordo com a nova fórmula.
+
+2.3 Rotina de cálculo com a nova fórmula
+
+Exemplo: Inscrição Estadual 0000000062521-3
+
+ 
+
+
+· Despreza-se o dígito verificador, trabalhando-se somente com os treze dígitos indicadores da empresa: 0000000062521
+
+
+· Atribui-se um peso a cada um dos treze dígitos da empresa seguindo a ordem abaixo:
+0 0 0 0 0 0 0 0 6 2 5 2 1
+6 5 4 3 2 9 8 7 6 5 4 3 2 pesos
+
+· Cálculo:
+(6 x 0)  + (5 x 0) +  (4 x 0)  + (3 x 0) +  (2 x 0)  + (9 x 0) +  (8 x 0)  + (7 x 0) +  (6 x 6)  + (5 x  2) +  (4 x 5) + (3  x 2) + (2 x  1) = 74
+
+O restante dos procedimentos são idênticos aos utilizados anteriormente:
+
+· O resto da divisão entre o resultado da operação acima 74 e o módulo 11 é igual a 8
+
+· Calculamos 11, que é o módulo, menos 8, resultado obtido acima, dá igual a 3 que é o dígito verificador da Inscrição 0000000062521
+
+· No caso da diferença calculada no parágrafo anterior fornecer como resultado 10 ou 11, subtrai-se 10 da mesma para obter o dígito verificador.  

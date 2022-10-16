@@ -1,12 +1,12 @@
 package validators
 
-// MT struct - Mato Grosso
+// MataGrosso struct - Mato Grosso
 // Implements the Validator interface
-type MT struct {
+type MataGrosso struct {
 }
 
 // IsValid func
-func (v MT) IsValid(insc string) bool {
+func (v MataGrosso) IsValid(insc string) bool {
 
 	rule := NewRule()
 

@@ -1,0 +1,43 @@
+Fonte: http://www.sintegra.gov.br/Cad_Estados/cad_PA.html
+
+GOVERNO DO ESTADO DO PARÁ
+ROTEIRO DE CRÍTICA DA INSCRIÇÃO ESTADUAL
+
+CÁLCULO DA INSCRIÇÃO ESTADUAL - SEFA - PARÁ
+Tamanho:9
+
+Formato: Numérico
+
+Composição: 15-999999-5
+
+                          15: Número Padrão Pará
+
+                           999999: Sequência
+
+                           5: Dígito Verificador (Módulo 11)
+
+Cálculo do dígito verificador Módulo 11
+
+1- Multiplica-se os números, da direita para a esquerda, pelos seguintes valores:
+     2, 3, 4, 5, 6, 7, 8, 9;
+
+2- Soma-se os resultados intermediários e divide-se por 11;
+
+3- Se o resto da divisão é 0 ou 1, o dígito é 0;
+
+4- Se o resto da divisão não é 0 nem 1, o dígito é = 11 - resto da divisão;
+
+Exemplo: Cálculo para a Inscrição 15999999-5
+
+                    9 x 1 =    9
+                    8 x 5 =    40
+                    7 x 9 =    63
+                    6 x 9 =    54
+                    5 x 9 =    45
+                    4 x 9 =    36
+                    3 x 9 =    27
+                    2 x 9 =   18
+                                  292
+
+292 : 11 = 26 (Resto 6)
+11 - 6 = 5 (Dígito Verificador 5)

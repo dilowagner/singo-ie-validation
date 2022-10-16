@@ -1,0 +1,55 @@
+Fonte: http://www.sintegra.gov.br/Cad_Estados/cad_AC.html
+GOVERNO DO ESTADO DO ACRE
+ROTEIRO DE CRÍTICA DA INSCRIÇÃO ESTADUAL
+
+Fórmula do cálculo do dígito verificador da inscrição estadual (módulo 11)
+
+Formato: 11 dígitos + 2 dígitos verificadores
+
+Os primeiros dois dígitos são sempre 01
+
+ Exemplo: Inscrição Estadual 01.004.823/001-12
+
+ · Atribui-se um peso a cada dígito, excluindo os dígitos verificadores,
+
+seguindo a ordem abaixo:
+
+0 1 0 0 4 8 2 3 0 0 1
+
+4 3 2 9 8 7 6 5 4 3 2 pesos
+
+ · Cálculo:
+
+(4 x 0) + (3 x 1) + (2 x 0) + (9 x 0) + (8 x 4) + (7 x 8) +
+
+(6 x 2) + (5 x 3) + (4 x 0) + (3 x 0) + (2 x 1) = 120
+
+ · O resto da divisão entre o resultado da operação acima 120 e o módulo 11 é igual a 10
+
+ · Calculamos 11, que é o módulo, menos 10, resultado obtido acima,
+
+dá igual a 1 que é o primeiro dígito verificador. Caso a diferença der 10 ou 11,
+
+o primeiro dígito é 0.
+
+ · Atribui-se novamente um peso a cada dígito, incluindo o primeiro dígito verificador
+
+calculado acima, seguindo a ordem abaixo:
+
+0 1 0 0 4 8 2 3 0 0 1 1
+
+5 4 3 2 9 8 7 6 5 4 3 2 pesos
+
+ · Cálculo:
+
+(5 x 0) + (4 x 1) + (3 x 0) + (2 x 0) + (9 x 4) + (8 x 8) +
+
+(7 x 2) + (6 x 3) + (5 x 0) + (4 x 0) + (3 x 1) + (2 x 1) = 141
+
+ · O resto da divisão entre o resultado da operação acima 141 e o módulo 11 é igual a 9
+
+ · Calculamos 11, que é o módulo, menos 9, resultado obtido acima,
+
+dá igual a 2 que é o segundo dígito verificador. Caso a diferença der 10 ou 11,
+
+o segundo dígito é 0.

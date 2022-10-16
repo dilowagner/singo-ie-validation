@@ -1,12 +1,12 @@
 package validators
 
-// PI struct - Piauí
+// Piaui struct - Piauí
 // Implements the Validator interface
-type PI struct {
+type Piaui struct {
 }
 
 // IsValid func
-func (v PI) IsValid(insc string) bool {
+func (v Piaui) IsValid(insc string) bool {
 
 	rule := NewRule()
 

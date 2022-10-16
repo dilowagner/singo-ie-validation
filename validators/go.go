@@ -4,13 +4,13 @@ import (
 	"strconv"
 )
 
-// GO struct - Goias
+// Goias struct - Goias
 // Implements the Validator interface
-type GO struct {
+type Goias struct {
 }
 
 // IsValid func
-func (v GO) IsValid(insc string) bool {
+func (v Goias) IsValid(insc string) bool {
 
 	rule := NewRule()
 	if !rule.IsCorrectSize(insc, 9) {

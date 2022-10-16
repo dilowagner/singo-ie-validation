@@ -1,0 +1,90 @@
+Fonte: http://www.sintegra.gov.br/Cad_Estados/cad_PR.html
+
+GOVERNO DO ESTADO DO PARANÁ
+ROTEIRO DE CRÍTICA DA INSCRIÇÃO ESTADUAL
+
+Formato da Inscrição: NNNNNNNN-DD
+Cálculo do Primeiro Dígito: Módulo 11 com pesos de 2 a 7, aplicados da direita para esquerda, sobre as 8 primeiras posições.
+
+Cálculo do Segundo Dígito: Módulo 11 com pesos de 2 a 7, aplicados da direita para esquerda, sobre as 9 primeiras posições (inclui o primeiro dígito).
+
+1º Passo: Multiplicar, da direita para esquerda, cada algarismo por pesos de 2 a 7, respectivamente, somar os resultados, calcular o módulo 11 e subtrair de 11. Se resto for 1 ou 0, veja observação abaixo.
+
+1 2 3 4 5 6 7 8 (CAD)
+3 2 7 6 5 4 3 2 (pesos)
+
+=> 8x2 + 7x3 + 6x4 + 5x5 + 4x6 + 3x7 + 2x2 + 1x3
+
+=> 16 + 21 + 24 + 25 + 24 + 21 + 4 + 3 = 138
+
+Cálculo de módulo 11 (resto da divisão por 11)
+
+138 / 11 = 12 => resto 6 (módulo11)
+
+11 - 6 = 5 (1º dígito verificador)
+
+2º Passo: Acrescentar o 1º dígito calculado ao CAD.
+
+123.45678-5
+
+3º Passo: Repetir 2º passo ao CAD do 3º passo.
+
+1 2 3 4 5 6 7 8 5 (CAD)
+4 3 2 7 6 5 4 3 2 (pesos)
+
+=> 5x2 + 8x3 + 7x4 + 6x5 + 5x6 + 4x7 + 3x2 + 2x3 1x4
+
+=> 10 + 24 + 28 + 30 + 30 + 28 + 6 + 6 + 4 = 166
+
+Cálculo de módulo 11 (resto da divisão por 11)
+
+166 / 11 = 15 => resto 1 (módulo 11)
+
+11 - 1 =  10
+
+Obs: Como cada dígito significa um algarismo, no caso do resto ser 1 ou 0, gerando "dígitos" 10 e 11, definimos o dígito como sendo 0.
+
+4º Passo: Reslutado final - CAD 123.45678-50
+
+Exemplo do algoritmo em Access Visual Basic
+Public Function verifica_CAD_PR(CAD As Variant) As Boolean
+
+
+Dim Cad1 As String, CAD2 As String
+Dim Soma As Integer, Digito As Integer
+Dim i As Integer, j As Integer
+Dim Controle As String , Mult As String
+
+'Identifica as 2 partes do CAD
+CAD = Format (CAD,"0000000000")
+CAD1 = Left$ (CAD, 8)
+CAD2 = Right$ (CAD,2
+
+'Inicializa a variável Controle
+Controle = ""
+
+' Multiplicadores que fazem parte do algoritmo de checagem
+Mult = "32765432"
+
+'Loop de verificação
+For j = 1 To 2
+Soma = 0
+For i = 1 To 8
+Soma = Soma + (Val(Mid$(CAD1,i,1)) * (Val(Mid$(Mult,i,1)))
+Next i
+If (j  = 2) Then Soma = Soma + (2 * Digito)
+Digito = 11 - (Soma Mod 11)
+If (Digito = 10 Or Digito = 11) Then Digito = 0
+Controle = Controle + Trim$(Str$(Digito))
+'Sequência de multiplicadores para Cálculo do segundo dígito
+Mult = "43276543"
+Next j
+
+'Compara dígitos calculados (Controle) com dígitos informados (CAD2)
+If (Controle <> CAD2) Then
+verifica_CAd_Pr = False
+Else
+verifica_CAD_PR = True
+End If
+
+End Function

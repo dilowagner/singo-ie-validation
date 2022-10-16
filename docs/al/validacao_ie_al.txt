@@ -1,0 +1,28 @@
+Fonte: http://www.sintegra.gov.br/Cad_Estados/cad_AL.html
+
+GOVERNO DO ESTADO DE ALAGOAS
+ROTEIRO DE CRÍTICA DA INSCRIÇÃO ESTADUAL
+
+FORMAÇÃO: 24XNNNNND,  sendo:
+24 – Código do Estado
+
+X – Tipo de empresa (0-Normal, 3-Produtor Rural, 5-Substituta, 7- Micro-Empresa Ambulante, 8-Micro-Empresa)
+
+NNNNN – Número da empresa
+
+D – Dígito de verificação calculado pelo Módulo11, pêsos 2 à 9 da direita para a esquerda, exceto D
+
+Exemplo: Número 2 4 0 0 0 0 0 4 D
+
+Pesos 9 8 7 6 5 4 3 2
+
+SOMA = (2 * 4) + (3 * 0) + (4 * 0) + (5 * 0) + (6 * 0) + (7 * 0) + (8 * 4) + (9 * 2) = 58
+
+PRODUTO = 58 * 10 = 580
+
+RESTO = 580 – INTEIRO(580 / 11)*11 = 580 – (52*11) = 8
+
+DÍGITO = 8
+
+OBS: Caso RESTO seja igual a 10 o DÍGITO será 0 (zero)
+

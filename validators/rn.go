@@ -4,13 +4,13 @@ import (
 	"strconv"
 )
 
-// RN struct - Rio Grande do Norte
+// RioGrandeNorte struct - Rio Grande do Norte
 // Implements the Validator interface
-type RN struct {
+type RioGrandeNorte struct {
 }
 
 // IsValid func
-func (v RN) IsValid(insc string) bool {
+func (v RioGrandeNorte) IsValid(insc string) bool {
 
 	rule := NewRule()
 	if !rule.IsCorrectSize(insc, 9) && !rule.IsCorrectSize(insc, 10) {
@@ -28,7 +28,7 @@ func (v RN) IsValid(insc string) bool {
 	return insc == base+digit
 }
 
-func (v RN) getSpecifDigit(rule Rules, insc string) string {
+func (v RioGrandeNorte) getSpecifDigit(rule Rules, insc string) string {
 
 	size := len(insc)
 	var s []int

@@ -1,12 +1,12 @@
 package validators
 
-// PA struct - Pará
+// Para struct - Pará
 // Implements the Validator interface
-type PA struct {
+type Para struct {
 }
 
 // IsValid func
-func (v PA) IsValid(insc string) bool {
+func (v Para) IsValid(insc string) bool {
 
 	rule := NewRule()
 

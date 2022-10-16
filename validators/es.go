@@ -1,12 +1,12 @@
 package validators
 
-// ES struct - Espirito Santo
+// EspiritoSanto struct - Espirito Santo
 // Implements the Validator interface
-type ES struct {
+type EspiritoSanto struct {
 }
 
 // IsValid func
-func (v ES) IsValid(insc string) bool {
+func (v EspiritoSanto) IsValid(insc string) bool {
 
 	rule := NewRule()
 

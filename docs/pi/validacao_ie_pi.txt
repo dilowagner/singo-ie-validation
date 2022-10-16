@@ -1,0 +1,27 @@
+Fonte: http://www.sintegra.gov.br/Cad_Estados/cad_PI.html
+
+GOVERNO DO ESTADO DO PIAUÍ
+ROTEIRO DE CRÍTICA DA INSCRIÇÃO ESTADUAL
+
+Fórmula do cálculo do dígito verificador da inscrição estadual
+
+Formato: 8 dígitos (empresa) +1 dígito verificador
+
+Exemplo: Inscrição Estadual número 012345679
+
+· Despreza-se o dígito verificador, trabalhando-se somente com os demais 8 dígitos: 01234567
+
+· Atribui-se um peso a cada um dos oito dígitos seguindo a ordem abaixo:
+
+0 1 2 3 4 5 6 7
+9 8 7 6 5 4 3 2 pesos
+
+· Cálculo
+
+(9 x 0)  + (8 x 1) + (7 x 2) + (6  x 3) + (5 x 4) + (4 x 5)  + (3 x 6) + (2 x 7) = 112
+
+· O resto da divisão entre o resultado da operação acima 112 e o módulo 11 é igual a 2
+
+· Calculamos 11, que é o módulo, menos 2, resultado obtido acima, e obtemos 9 que é o dígito verificador da Inscrição, que ficará 012345679, e nesse exemplo ela está correta.
+
+· No caso da diferença calculada no item anterior fornecer como resultado 10 ou 11, o dígito verificador será 0.

@@ -1,12 +1,12 @@
 package validators
 
-// SC struct - Santa Catarina
+// SantaCatarina struct - Santa Catarina
 // Implements the Validator interface
-type SC struct {
+type SantaCatarina struct {
 }
 
 // IsValid func
-func (v SC) IsValid(insc string) bool {
+func (v SantaCatarina) IsValid(insc string) bool {
 
 	rule := NewRule()
 

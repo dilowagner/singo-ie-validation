@@ -1,16 +1,17 @@
 package validators
 
-import "strings"
+import (
+	"strconv"
+	"strings"
+)
 
-import "strconv"
-
-// MG struct - Minas Gerais
+// MinasGerais struct - Minas Gerais
 // Implements the Validator interface
-type MG struct {
+type MinasGerais struct {
 }
 
 // IsValid func
-func (v MG) IsValid(insc string) bool {
+func (v MinasGerais) IsValid(insc string) bool {
 
 	rule := NewRule()
 

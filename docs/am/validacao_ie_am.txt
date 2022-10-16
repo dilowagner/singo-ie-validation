@@ -1,0 +1,24 @@
+Fonte: http://www.sintegra.gov.br/Cad_Estados/cad_AM.html
+
+GOVERNO DO ESTADO DO AMAZONAS
+ROTEIRO DE CRÍTICA DA INSCRIÇÃO ESTADUAL
+
+Máscara de edição: 99 . 999 . 999 - 9
+..................................................!
+..................................................!............dígito verificador
+Cálculo do dígito verificador: 99 . 999 . 999
+...........................................hg . fed . cba
+
+Soma = (Hx9)+(Gx8)+(Fx7)+(Ex6)+(Dx5)+(Cx4)+(Bx3)+(Ax2)
+Se Soma < 11
+Então
+....Dígito = 11 - Soma
+Senão
+....Quociente = Soma / 11
+....Se Resto < ou = 1
+....Então
+............Dígito = 0
+....Senão
+............Dígito = 11 - Resto  
+
+Voltar

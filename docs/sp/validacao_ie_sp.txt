@@ -1,0 +1,72 @@
+Fonte: http://www.sintegra.gov.br/Cad_Estados/cad_SP.html
+
+GOVERNO DO ESTADO DE SÃO PAULO
+ROTEIRO DE CRÍTICA DA INSCRIÇÃO ESTADUAL
+
+Fórmula do cálculo do dígito verificador da inscrição estadual (módulo 11)
+Regra Geral: Em todas as contagens de posições de caracteres e cálculos efetuados deverão ser ignorados caracteres diferentes da letra "P" e dos algarismos 0, 1, 2, 3, 4, 5, 6, ,7, 8 e 9.
+
+I – Industriais e comerciantes (exceto produtores rurais a eles não equiparados):
+
+à Formato: 12 dígitos sendo que o 9º e o 12º são dígitos verificadores
+
+à Exemplo: Inscrição Estadual 110.042.490.114
+
+a) Cálculo do 1º dígito verificador, ou seja, do 9º dígito contado a partir da esquerda:
+
+- Atribui-se um peso a cada dígito da Inscrição Estadual seguindo a ordem utilizada abaixo:
+
+1  1  0  0  4  2  4  9  0  1  1  4
+
+1  3  4  5  6  7  8 10 PESOS
+
+(1 x 1) + (1 x 3) + (0 x 4) + (0 x 5) + (4 x 6) + (2 x 7) + (4 x 8) + (9 x 10) = 1 + 3 + 0 + 0 + 24 + 14 + 32 + 90 = 164
+
+- O dígito verificador será o algarismo mais à direita do resto da divisão do resultado obtido acima (164) por 11
+
+à 164/11 = 14 com resto = 10, então o 1º dígito verificador (9ª posição) é 0
+
+b) Cálculo do 2º dígito verificador, ou seja, do 12º dígito contado a partir da esquerda:
+
+Atribui-se um peso a cada dígito da Inscrição Estadual seguindo a ordem utilizada abaixo:
+1  1  0  0  4  2  4  9  0  1  1  4
+3  2 10  9  8  7  6  5  4  3  2 PESOS
+
+(1 x 3) + (1 x 2) + (0  x 10) + (0 x 9) + (4 x 8)  + (2 x 7) + (4 x 6) + (9  x 5) + (0 x 4) + (1 x 3)  + (1 x 2) = 3 + 2 + 0 + 0 + 32 + 14 + 24 + 45 + 0 + 3 + 2 = 125
+
+O dígito verificador será o algarismo mais à direita do resto da divisão do resultado obtido acima (118) por 11
+à 125/11 = 11 com resto = 4, então o 2º dígito verificador (12ª posição) é 4
+
+Fica então formada a inscrição 110.042.490.114
+
+  
+
+II – Inscrição estadual de Produtor Rural (Não equiparado a industrial ou comerciante, cujas inscrições obedecem a Regra descrita no item anterior):
+
+à Formato: - P0MMMSSSSD000
+- 13 caracteres dos quais o 10º caracter contado a partir da esquerda ("D") é o dígito verificador
+
+- Inicia sempre com "P" e apresenta a sequência 0MMMSSSSD000, onde:
+
+0MMMSSSS à algarismos que serão utilizados no cálculo do dígito verificador "D"
+"D" à Dígito verificador que consiste os 8 (oito)dígitos imediatamente anteriores
+000 à 3 (três) dígitos que compõem o nº de inscrição mas não utilizados no cálculo do dígito verificador
+
+à Exemplo: Inscrição Estadual P-01100424.3/002
+
+Cálculo do dígito verificador, ou seja, do 10º dígito contado a partir da esquerda, incluindo-se na contagem a letra "P":
+
+- Atribui-se um peso a cada dígito da Inscrição Estadual a partir do primeiro 0 (zero) seguindo a ordem utilizada abaixo:
+
+0  1  1  0  0  4  2  4  3
+1  3  4  5  6  7  8 10 PESOS
+
+(0x 1) + (1 x 3) + (1  x 4) + (0 x 5) + (0 x 6)  + (4 x 7) + (2 x 8) + (4  x 10) = 0 + 3 + 4 + 0 + 0 + 28 + 16 + 40 = 91
+
+- O dígito verificador será o algarismo mais à direita do resto da divisão do resultado obtido acima (91) por 11
+
+à 91/11 = 8 com resto = 3, então o dígito verificador (10ª posição) é 3
+
+ 
+
+Fica então formada a inscrição P-011000424.3/002

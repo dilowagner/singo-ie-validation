@@ -1,0 +1,32 @@
+Fonte: http://www.sintegra.gov.br/Cad_Estados/cad_RR.html
+
+GOVERNO DO ESTADO DE RORAIMA
+ROTEIRO DE CRÍTICA DA INSCRIÇÃO ESTADUAL
+
+O Número de Inscrição Estadual é composto por 9 Dígitos,
+sendo os dois primeiros indicativos do Estado da Federação,
+6 dígitos que representam a inscrição e, por último, um
+Dígito Verificador de módulo 9.
+Algumas inscrições com dígito válido:
+24006628-1
+24001755-6
+24003429-0
+24001360-3
+24008266-8
+24006153-6
+24007356-2
+24005467-4
+24004145-5
+24001340-7
+
+Exemplo: inscrição (240061536)
+
+12345678 => posição dos dígitos do número
+240061536 => número da inscrição
+
+Multiplicar o número referente à posição pelo número
+referente à inscrição ex: 1*2, 2*4, 3*0 etc, somando os
+valores, ao final o dígito verificador será o resto da
+divisão deste número por (9).
+Neste exemplo temos a soma de (105) e o resto da divisão
+deste valor por (9) dá (6) que é o dígito da inscrição.

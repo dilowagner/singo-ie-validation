@@ -1,0 +1,146 @@
+Fonte: http://www.sintegra.gov.br/Cad_Estados/cad_BA.html
+
+GOVERNO DO ESTADO DA BAHIA
+ROTEIRO DE CRÍTICA DA INSCRIÇÃO ESTADUAL
+
+1          Cálculo do Dígito Verificador para inscrições estaduais com 8 dígitos:
+
+1. Para Inscrições cujo primeiro dígito da I.E. é 0,1,2,3,4,5,8 cálculo pelo módulo 10.
+
+
+Exemplo: I.E. número 1 2 3 4 5 6 - 6 3
+
+
+1.1 Cálculo do 2º dígito: Módulo 10 com peso de 2 a 7, aplicados da direita para esquerda, atribuindo um peso a cada dígito da I.E. seguindo a ordem abaixo:
+
+1 2 3 4 5 6
+
+7 6 5 4 3 2 pesos
+
+ 
+
+Cálculo:
+(7 x 1) + (6 x 2) + (5 x 3) + (4 x 4) + (3 x 5) + (2 x 6) = 77
+
+O resto da divisão entre o resultado da operação acima 77 e o módulo 10 é igual a 7.
+
+ 
+
+Assim 10 (módulo) - 7 (resto da divisão)= 3 (2º dígito verificador da Inscrição Estadual: 123456-63).
+
+
+obs.: quando o resto for igual a 0 (zero), o segundo dígito é igual a 0 (zero).
+
+
+
+1.2 Cálculo do 1º dígito: Módulo 10 com peso de 2 a 8 aplicados da direita para esquerda, repete-se o processo anterior atribuindo um peso a cada dígito da I.E. incluindo o 2º dígito, seguindo a ordem abaixo:
+1 2 3 4 5 6 3
+
+8 7 6 5 4 3 2 pesos
+
+
+Cálculo:
+(8 x 1)+(7 x 2)+(6 x 3)+(5 x 4)+(4 x 5)+(3 x 6)+(2 x 3)= 104
+
+O resto da divisão entre o resultado da operação acima 104 e o módulo 10 é igual a 4.
+
+
+Assim 10 (módulo) - 4 (resto da divisão)= 6 (1º dígito verificador da Inscrição Estadual: 123456-63).
+
+
+
+2.Para Inscrições cujo primeiro dígito da I.E. é 6, 7 ou 9 cálculo pelo módulo 11.
+
+
+Exemplo: I.E. número 6 1 2 3 4 5 - 5 7 
+
+
+
+2.1Cálculo do 2º dígito: Módulo 11 com peso de 2 a 7, aplicados da direita para esquerda, atribuindo um peso a cada dígito da I.E. seguindo a ordem abaixo:
+
+6 1 2 3 4 5
+
+7 6 5 4 3 2 pesos
+
+
+Cálculo:
+(7 x 6)+(6 x 1)+(5 x 2)+(4 x 3)+(3 x 4)+(2 x 5)= 92
+
+O resto da divisão entre o resultado da operação acima 92 e o módulo 11 é igual a 4.
+
+
+Assim 11 (módulo) - 4 (resto da divisão)= 7 (2º dígito verificador da Inscrição Estadual:  612345-57).
+
+
+obs.: quando o resto for igual a 0 (zero) ou 1 (um), o segundo dígito é igual a 0 (zero).
+
+
+
+
+2.2Cálculo do 1º dígito: Módulo 11 com peso de 2 a 8 aplicados da direita para esquerda, repete-se o processo anterior atribuindo um peso a cada dígito da I.E. incluindo o 2º dígito, seguindo a ordem abaixo:
+6 1 2 3 4 5 7
+
+8 7 6 5 4 3 2 pesos
+
+
+Cálculo:
+(8 x 6)+(7 x 1)+(6 x 2)+(5 x 3)+(4 x 4)+(3 x 5)+(2 x 7)= 127
+
+O resto da divisão entre o resultado da operação acima 127 e o módulo 11 é igual a 6.
+
+
+Assim 11 (módulo) - 6 (resto da divisão)= 5 (1º dígito verificador da I.E. 612345-57).
+
+
+ 
+
+2          Cálculo do Dígito Verificador para inscrições estaduais com 9 dígitos:
+ 
+
+1.Para Inscrições cujo segundo dígito da I.E. é 0,1,2,3,4,5,8 cálculo pelo módulo 10.
+
+
+Exemplo: I.E. número 1 0 0 0 0 0 3 - 0 6
+
+ 
+
+1.1Cálculo do 2º dígito: Módulo 10 com peso de 2 a 8, aplicados da direita para esquerda, atribuindo um peso a cada dígito da I.E. seguindo a ordem abaixo:
+1 0 0 0 0 0 3
+
+8 7 6 5 4 3 2 pesos
+
+
+Cálculo:
+(8 x 1)+(7 x 0)+ (6 x 0)+ (5 x 0)+(4 x 0)+(3 x 0)+(2 x 3)= 14
+
+O resto da divisão entre o resultado da operação acima 14 e o módulo 10 é igual a 4.
+
+
+Assim 10 (módulo) - 4 (resto da divisão)= 6 (2º dígito verificador da Inscrição Estadual: 1000003-06).
+
+
+obs.: quando o resto for igual a 0 (zero), o segundo dígito é igual a 0 (zero)
+
+
+1.2 Cálculo do 1º dígito: Módulo 10 com peso de 2 a 9 aplicados da direita para esquerda, repete-se o processo anterior atribuindo um peso a cada dígito da I.E. incluindo o 2º dígito, seguindo a ordem abaixo
+1 0 0 0 0 0 3 6
+
+9 8 7 6 5 4 3 2 pesos
+
+
+Cálculo:
+(9x1)+(8x0)+(7x0)+(6x0)+(5x0)+(4x0)+(3x3)+(2x6) = 30
+
+
+
+O resto da divisão entre o resultado da operação acima 30 e o módulo 10 é igual a 0 (1º dígito verificador da I.E. 1000003-06).
+
+ 
+
+2.Para Inscrições cujo segundo dígito da I.E. é 6, 7 ou 9, o cálculo é realizado da mesma forma, entretanto utilizando módulo 11.
+
+
+
+obs.: quando o resto for igual a 0 (zero) ou 1 (um), o digito é igual a 0 (zero).
+
+ 

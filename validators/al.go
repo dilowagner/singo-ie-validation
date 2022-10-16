@@ -4,13 +4,13 @@ import (
 	"strconv"
 )
 
-// AL struct - Alagoas
+// Alagoas struct - Alagoas
 // Implements the Validator interface
-type AL struct {
+type Alagoas struct {
 }
 
 // IsValid func
-func (v AL) IsValid(insc string) bool {
+func (v Alagoas) IsValid(insc string) bool {
 
 	rule := NewRule()
 	if !rule.IsCorrectSize(insc, 9) {

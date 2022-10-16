@@ -1,12 +1,12 @@
 package validators
 
-// MS struct - Mato Grosso do Sul
+// MatoGrossoSul struct - Mato Grosso do Sul
 // Implements the Validator interface
-type MS struct {
+type MatoGrossoSul struct {
 }
 
 // IsValid func
-func (v MS) IsValid(insc string) bool {
+func (v MatoGrossoSul) IsValid(insc string) bool {
 
 	rule := NewRule()
 

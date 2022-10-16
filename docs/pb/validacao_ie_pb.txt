@@ -1,0 +1,24 @@
+Fonte: http://www.sintegra.gov.br/Cad_Estados/cad_PB.html
+
+GOVERNO DO ESTADO DA PARAÍBA
+ROTEIRO DE CRÍTICA DA INSCRIÇÃO ESTADUAL
+
+Fórmula do cálculo do dígito verificador da inscrição estadual (módulo 11)
+Formato: 8 dígitos + 1 dígito verificador
+
+Exemplo: CGF número 06000001-5
+
+Atribui-se um peso a cada dígito do CGF seguindo a ordem abaixo:
+
+0 6 0 0 0 0 0 1
+9 8 7 6 5 4 3 2 pesos
+
+Cálculo:
+
+(9 x 0) + (8  x 6) + (7 x 0) + (6  x 0) +
+
+(5 x 0) + (4 x 0) + (3  x 0) + (2 x 1) = 50
+
+O resto da divisão entre o resultado da operação acima 50 e o módulo 11 é igual a 6
+
+Pegamos 11, que é o módulo, menos 6, resultado obtido acima, dá igual a 5 que é o dígito verificador do CGF 06000001.  Caso a diferença der 10 ou 11, o dígito é 0.

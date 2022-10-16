@@ -1,12 +1,12 @@
 package validators
 
-// PE struct - Pernambuco
+// Pernambuco struct - Pernambuco
 // Implements the Validator interface
-type PE struct {
+type Pernambuco struct {
 }
 
 // IsValid func
-func (v PE) IsValid(insc string) bool {
+func (v Pernambuco) IsValid(insc string) bool {
 
 	rule := NewRule()
 
