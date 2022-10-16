@@ -1,4 +1,4 @@
-module github.com/darllantissei/singo-ie-validation
+module github.com/dilowagner/singo-ie-validation
 
 go 1.19
 

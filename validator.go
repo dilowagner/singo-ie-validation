@@ -6,7 +6,7 @@ import (
 
 	"errors"
 
-	"github.com/darllantissei/singo-ie-validation/validators"
+	"github.com/dilowagner/singo-ie-validation/validators"
 )
 
 // ValidatableManager interface
