@@ -51,7 +51,7 @@ func main() {
 Basta clonar o projeto e rodar o comando:
 
 ```go
-  go test
+  go test ./...
 ```
 
 ## Utilização
