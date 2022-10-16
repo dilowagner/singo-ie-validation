@@ -31,9 +31,7 @@ func main() {
 	validator := singo.NewIEValidator()
 
 	validator.IE = "251.040.852" // SC - Valido
-	validator.UF = validator.GetEnumUF("SC")
-	// OU
-	//validator.UF = validator.GetEnumUF("42")
+	validator.UF = "SC"
 
 	result, err := validator.Validate()
 	if err != nil {
