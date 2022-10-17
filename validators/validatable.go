@@ -1,6 +1,6 @@
 package validators
 
-// IValidatable interface
-type IValidatable interface {
+// Validator interface
+type Validator interface {
 	IsValid(insc string) bool
 }

@@ -48,7 +48,7 @@ func (v IEValidator) filter(ie string) string {
 	return regex.ReplaceAllString(strings.TrimSpace(strings.ToUpper(v.IE)), "")
 }
 
-func (v IEValidator) getValidate() validators.IValidatable {
+func (v IEValidator) getValidate() validators.Validator {
 	switch v.UF {
 	case validators.AC:
 		return validators.Acre{}
