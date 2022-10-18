@@ -1,10 +1,10 @@
-module github.com/dilowagner/singo-ie-validation
+module github.com/darllantissei/singo-ie-validation
 
 go 1.19
 
 require (
 	github.com/stretchr/testify v1.8.0
-	golang.org/x/text v0.3.8
+	golang.org/x/text v0.4.0
 )
 
 require (

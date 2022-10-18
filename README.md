@@ -1,6 +1,6 @@
 # Singo IE Validation - Golang
 
-![Build Status](https://travis-ci.org/dilowagner/singo-ie-validation.svg?branch=master)
+![Build Status](https://travis-ci.org/darllantissei/singo-ie-validation.svg?branch=master)
 [![npm](https://img.shields.io/npm/l/express.svg)]()
 
 ### Biblioteca para validação das inscrições dos estados brasileiros.
@@ -11,7 +11,7 @@ Validações implementadas de acordo com o [manual do Sintegra](http://www.sinte
 Para utilizar no seu projeto basta executar o seguinte comando
 
 ```go
-  go get github.com/dilowagner/singo-ie-validation
+  go get github.com/darllantissei/singo-ie-validation
 ```
 
 ## Exemplo de utilização
@@ -23,7 +23,7 @@ package main
 import (
 	"fmt"
 
-	singo "github.com/dilowagner/singo-ie-validation"
+	singo "github.com/darllantissei/singo-ie-validation"
 )
 
 func main() {
@@ -65,4 +65,4 @@ Para utilizar esta biblioteca, você pode usar o projeto [singo-api](https://git
 Quer contribuir?
 
 ## Licença MIT
-Esta biblioteca segue os termos de uso da [MIT](https://github.com/dilowagner/singo-ie-validation/blob/master/LICENSE)
+Esta biblioteca segue os termos de uso da [MIT](https://github.com/darllantissei/singo-ie-validation/blob/master/LICENSE)
