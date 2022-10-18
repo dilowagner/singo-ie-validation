@@ -1,8 +1,5 @@
 # Singo IE Validation - Golang
 
-![Build Status](https://travis-ci.org/darllantissei/singo-ie-validation.svg?branch=master)
-[![npm](https://img.shields.io/npm/l/express.svg)]()
-
 ### Biblioteca para validação das inscrições dos estados brasileiros.
 
 Validações implementadas de acordo com o [manual do Sintegra](http://www.sintegra.gov.br/insc_est.html).
