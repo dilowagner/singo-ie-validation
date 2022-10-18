@@ -1,5 +1,7 @@
 # Singo IE Validation - Golang
 
+![tests](https://github.com/darllantissei/singo-ie-validation/actions/workflow/go.yml/badge.svg)
+
 ### Biblioteca para validação das inscrições dos estados brasileiros.
 
 Validações implementadas de acordo com o [manual do Sintegra](http://www.sintegra.gov.br/insc_est.html).
