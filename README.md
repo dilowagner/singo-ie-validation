@@ -1,6 +1,6 @@
 # Singo IE Validation - Golang
 
-![Go](https://github.com/darllantissei/singo-ie-validation/actions/workflows/go.yml?branch=master)
+![Go](https://github.com/darllantissei/singo-ie-validation/actions/workflows/go.yml/badge.svg?branch=master)
 
 ### Biblioteca para validação das inscrições dos estados brasileiros.
 
