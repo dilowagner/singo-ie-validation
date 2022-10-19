@@ -1,0 +1,42 @@
+Fonte: http://www.sintegra.gov.br/Cad_Estados/cad_MA.html
+
+GOVERNO DO ESTADO DO MARANHÃO
+ROTEIRO DE CRÍTICA DA INSCRIÇÃO ESTADUAL
+
+Formato: numérico
+
+Tamanho: 9 dígitos, sendo:
+
+...........- os dois primeiros correspondentes ao código do Estado(12);
+
+...........- os seis seguintes ao número de ordem no cadastro;
+
+...........- e o último dígito ao dígito de controle, calculado através do módulo 11.
+
+Exemplo: calcular o dígito verificador X do número de inscrição estadual 12000038X
+
+Passo 1: Multiplica um peso, já definido abaixo, pelo dígito equivalente do número de inscrição:
+
+.....Nº de Inscrição fornecido
+
+.......1.....2.....0.....0.....0.....0.....3.....8.....X
+
+...............Peso p/Multiplicar
+
+.......9.....8.....7.....6.....5.....4.....3.....2.....DV
+
+
+Passo 2: Soma-se o resultado das multiplicações acima e divide-se por 11.
+
+Soma = (9x1) + (8x2) + (7x0) + (6x0) + (5x0) + (4x0) + (3x3) + (2x8) = 50
+
+
+Passo 3: Se o resto da divisão é 0 ou 1, o dígito é 0. Caso contrário, o dígito é 11 - resto da divisão.
+
+................50 dividido por 11 = 4
+
+................Resto = 6
+
+................Dígito Verificador = 11 - 6 = 5
+
+Inscrição Estadual com dígito verificador: 120000385

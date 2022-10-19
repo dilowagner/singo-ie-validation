@@ -1,12 +1,12 @@
 package validators
 
-// TO struct - Tocantins
+// Tocantins struct - Tocantins
 // Implements the Validator interface
-type TO struct {
+type Tocantins struct {
 }
 
 // IsValid func
-func (v TO) IsValid(insc string) bool {
+func (v Tocantins) IsValid(insc string) bool {
 
 	rule := NewRule()
 

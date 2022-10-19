@@ -1,12 +1,12 @@
 package validators
 
-// SE struct - Sergipe
+// Sergipe struct - Sergipe
 // Implements the Validator interface
-type SE struct {
+type Sergipe struct {
 }
 
 // IsValid func
-func (v SE) IsValid(insc string) bool {
+func (v Sergipe) IsValid(insc string) bool {
 
 	rule := NewRule()
 

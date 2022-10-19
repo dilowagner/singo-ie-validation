@@ -4,13 +4,13 @@ import (
 	"strconv"
 )
 
-// PR struct - Parana
+// Parana struct - Parana
 // Implements the Validator interface
-type PR struct {
+type Parana struct {
 }
 
 // IsValid func
-func (v PR) IsValid(insc string) bool {
+func (v Parana) IsValid(insc string) bool {
 
 	rule := NewRule()
 
@@ -27,7 +27,7 @@ func (v PR) IsValid(insc string) bool {
 	return insc == base+firstDigit+secondDigit
 }
 
-func (v PR) getSpecifDigit(rule Rules, insc string) string {
+func (v Parana) getSpecifDigit(rule Rules, insc string) string {
 
 	size := len(insc) - 2
 	var s []int

@@ -4,13 +4,13 @@ import (
 	"strconv"
 )
 
-// SP struct - São Paulo
+// SaoPaulo struct - São Paulo
 // Implements the Validator interface
-type SP struct {
+type SaoPaulo struct {
 }
 
 // IsValid func
-func (v SP) IsValid(insc string) bool {
+func (v SaoPaulo) IsValid(insc string) bool {
 
 	rule := NewRule()
 

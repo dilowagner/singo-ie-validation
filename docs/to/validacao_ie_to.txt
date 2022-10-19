@@ -1,0 +1,44 @@
+Fonte: http://www.sintegra.gov.br/Cad_Estados/cad_TO.html
+
+GOVERNO DO ESTADO DO TOCANTINS
+ROTEIRO DE CRÍTICA DA INSCRIÇÃO ESTADUAL
+
+Cálculo da Inscrição Estadual
+
+Aplica-se o cálculo "módulo 11" com os algarismos 1,2,5,6,7,8,9,10 da Inscrição Estadual, criando o "11º" que é o dígito verificador. Os dígitos "3" e "4" não entram no cálculo, porém podem assumir somente os seguintes valores:
+
+01 = Produtor Rural (não possui CGC)
+
+02 = Industria e Comércio
+
+03 = Empresas Rudimentares
+
+99 = Empresas do Cadastro Antigo (SUSPENSAS)
+
+Exemplo: 29 01 022783 6
+
+vide imagem validacao_ie_to.png
+
+SOMA I = ( ( PRIMEIRO * 9) + (SEGUNDO * 8) + (TERCEIRO * 7) + (QUARTO * 6) + (QUINTO * 5) +  (SEXTO * 4) + (SÉTIMO * 3) + (OITAVO * 2) )
+
+DIVISÃO MODAL DA "SOMA I" POR "ONZE"
+
+SE O RESTO DA DIVISÃO FOR MENOR QUE DOIS
+
+DÍGITO = ZERO.
+
+OU SE O RESTO DA DIVISÃO FOR MAIOR OU IGUAL A DOIS
+
+DÍGITO = ONZE MENOS O RESTO
+
+NO EXEMPLO:
+
+170 = (2 * 9) + (9 * 8) + (0 * 7) + (2 * 6) + (2 * 5) + (7 * 4) + (8 * 3) + (3 * 2)
+
+170 / 11 = 15 -----» resto = 5 (pois 15 x 11 = 165)
+
+5 > 2
+
+portanto
+
+DÍGITO = 11 - 5 OU SEJA DÍGITO = 6

@@ -1,0 +1,28 @@
+Fonte: http://www.sintegra.gov.br/Cad_Estados/cad_SE.html
+
+GOVERNO DO ESTADO DE SERGIPE
+ROTEIRO DE CRÍTICA DA INSCRIÇÃO ESTADUAL
+
+Fórmula do cálculo do dígito verificador da inscrição estadual
+(módulo 11)
+Formato: 8 dígitos + 1 dígito verificador
+Exemplo: IE número 27123456-3
+Desconsidera-se, para efeito de cálculo, o dígito verificador:
+
+No exemplo "27123456-3", o número "27123456" servirá de base para o cálculo
+
+Atribui-se um peso a cada dígito da IE, excluindo o dígito verificador, seguindo a ordem abaixo:
+
+2 7 1 2 3 4 5 6
+
+9 8 7 6 5 4 3 2 pesos
+
+Cálculo: (9 x 2) + (8 x 7) + (7 x 1) + (6 x 2) + (5 x 3) + (4 x 4) + (3 x 5) + (2 x 6) = 151;
+
+Divide-se o resultado da operação acima por 11 (módulo 11) e se obtém 13 como resultado e 8 como resto;
+
+Subtrai-se 11 (módulo) do resto (8), e tem-se 3 como diferença;
+
+O resultado da subtração, neste caso 3, será o dígito verificador da IE "27123456";
+
+Caso o número encontrado da subtração seja 10 ou 11, o dígito será 0 (zero).

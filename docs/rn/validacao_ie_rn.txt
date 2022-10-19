@@ -1,0 +1,73 @@
+Fonte: http://www.sintegra.gov.br/Cad_Estados/cad_RN.html
+
+GOVERNO DO ESTADO DO RIO GRANDE DO NORTE
+ROTEIRO DE CRÍTICA DA INSCRIÇÃO ESTADUAL
+
+INSCRIÇÃO :  20.040.040-1(9 dígitos) ou 20.0.040.040-0(10 dígitos) 
+(as duas são válidas)(ampliação do número de dígitos)
+(Os primeiros dois dígitos são sempre 20)
+
+MEMORIA DE CÁLCULO:
+
+9 dígitos:
+
+2 * 9  =  18
+0 * 8  =   0
+0 * 7  =   0
+4 * 6  =  24
+0 * 5  =   0
+0 * 4  =   0
+4 * 3  =  12
+0 * 2  =   0
+        ----
+SOMA  ->  54
+ 
+
+MULTIPLICA A SOMA POR 10
+
+    MULTIPLICAÇÃO = SOMA * 10 = 54 * 10 = 540
+ 
+
+DIVIDE POR 11, OBTENDO O RESTO DA DIVISAO
+
+ DIVISÃO = MULTIPLICAÇÃO / 11    =  540 / 11
+
+              RESTO (DIVISÃO) = 1
+ 
+
+DIGITO VERIFICADOR = RESTO (DIVISÃO)
+ 
+
+OBSERVACAO: CASO O DIGITO CALCULADO SEJA 10, CONSIDERAR DIGITO = 0
+
+10 dígitos:
+
+2 * 10  =  20
+0 * 9  =  0
+0 * 8  =   0
+0 * 7  =   0
+4 * 6  =  24
+0 * 5  =   0
+0 * 4  =   0
+4 * 3  =  12
+0 * 2  =   0
+        ----
+SOMA  ->  56
+ 
+
+MULTIPLICA A SOMA POR 10
+
+    MULTIPLICAÇÃO = SOMA * 10 = 56 * 10 = 560
+ 
+
+DIVIDE POR 11, OBTENDO O RESTO DA DIVISAO
+
+ DIVISÃO = MULTIPLICAÇÃO / 11    =  560 / 11
+
+              RESTO (DIVISÃO) = 10
+ 
+
+DIGITO VERIFICADOR = RESTO (DIVISÃO)
+ 
+
+OBSERVACAO: CASO O DIGITO CALCULADO SEJA 10, CONSIDERAR DIGITO = 0

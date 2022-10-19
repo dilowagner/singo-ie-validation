@@ -1,12 +1,12 @@
 package validators
 
-// RO struct - Rondônia
+// Rondonia struct - Rondônia
 // Implements the Validator interface
-type RO struct {
+type Rondonia struct {
 }
 
 // IsValid func
-func (v RO) IsValid(insc string) bool {
+func (v Rondonia) IsValid(insc string) bool {
 
 	rule := NewRule()
 

@@ -1,12 +1,12 @@
 package validators
 
-// RJ struct - Rio de Janeiro
+// RioJaneiro struct - Rio de Janeiro
 // Implements the Validator interface
-type RJ struct {
+type RioJaneiro struct {
 }
 
 // IsValid func
-func (v RJ) IsValid(insc string) bool {
+func (v RioJaneiro) IsValid(insc string) bool {
 
 	rule := NewRule()
 

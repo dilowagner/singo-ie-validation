@@ -4,13 +4,13 @@ import (
 	"strconv"
 )
 
-// AP struct - Amapá
+// Amapa struct - Amapá
 // Implements the Validator interface
-type AP struct {
+type Amapa struct {
 }
 
 // IsValid func
-func (v AP) IsValid(insc string) bool {
+func (v Amapa) IsValid(insc string) bool {
 
 	rule := NewRule()
 

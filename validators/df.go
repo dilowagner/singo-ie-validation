@@ -1,12 +1,12 @@
 package validators
 
-// DF struct - Distrito Federal
+// DistroFederal struct - Distrito Federal
 // Implements the Validator interface
-type DF struct {
+type DistroFederal struct {
 }
 
 // IsValid func
-func (v DF) IsValid(insc string) bool {
+func (v DistroFederal) IsValid(insc string) bool {
 
 	rule := NewRule()
 

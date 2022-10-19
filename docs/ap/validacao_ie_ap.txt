@@ -1,0 +1,32 @@
+Fonte: http://www.sintegra.gov.br/Cad_Estados/cad_AP.html
+
+GOVERNO DO ESTADO DO AMAPÁ
+ROTEIRO DE CRÍTICA DA INSCRIÇÃO ESTADUAL
+
+Formato: 2 dígitos constantes (03) + 6 dígitos (empresa) +1 dígito verificador
+
+Exemplo: Inscrição Estadual número 030123459
+
+· Verifica-se se os dois primeiros dígitos são de fato 03
+
+· Despreza-se o dígito verificador, trabalhando-se somente com os demais 8 dígitos: 03012345
+
+· Define-se dois valores, p e d, de acordo com as seguintes faixas de Inscrição Estadual:
+De 03000001 a 03017000 => p = 5 e d = 0
+De 03017001 a 03019022 => p = 9 e d = 1
+De 03019023 em diante ===>p = 0 e d = 0
+
+No exemplo acima, temos p = 5 e d = 0
+
+· Atribui-se um peso a cada um dos oito dígitos da empresa seguindo a ordem abaixo:
+0 3 0 1 2 3 4 5
+9 8 7 6 5 4 3 2 pesos
+
+· Cálculo:
+p + (9 x 0) + (8 x 3) + (7 x 0) + (6 x 1) + (5 x 2) + (4 x 3) + (3 x 4) + (2 x 5) = 79
+
+· O resto da divisão entre o resultado da operação acima 79 e o módulo 11 é igual a 2
+
+· Calculamos 11, que é o módulo, menos 2, resultado obtido acima, e obtemos 9 que é o dígito verificador da Inscrição, que será 030123459, e nesse exemplo estará correta.
+
+· No caso da diferença calculada no item anterior fornecer como resultado 10, o dígito verificador será 0, e se o resultado for 11, ele será d.

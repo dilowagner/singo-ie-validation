@@ -1,0 +1,28 @@
+Fonte: http://www.sintegra.gov.br/Cad_Estados/cad_MS.html
+
+GOVERNO DO ESTADO DO MATO GROSSO DO SUL
+ROTEIRO DE CRÍTICA DA INSCRIÇÃO ESTADUAL
+
+O método adotado para se verificar a compatibilidade entre o número principal da inscrição estadual, composto dos primeiros oito dígitos, e o seu dígito verificador, representado pelo nono dígito, segue as regras:
+
+I – o primeiro dígito será sempre representado pelo número 2;
+
+II - o segundo dígito será sempre representado pelo número 8.
+
+O método a que se refere o artigo anterior é assim representado:
+
+A = (1º x 9)+(2º x 8)+(3º x 7)+(4º x 6)+(5º x 5)+(6º x 4)+(7º x 3)+(8º x 2)
+
+R = Resto de A/11
+
+Se R = 0, então D = 0
+
+Se R > 0
+
+T = 11 – R
+
+Se T > 9, então D = 0
+
+Se T < 10, então D = T
+
+Em que D = Dígito Verificador.

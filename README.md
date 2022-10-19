@@ -31,7 +31,9 @@ func main() {
 	validator := singo.NewIEValidator()
 
 	validator.IE = "251.040.852" // SC - Valido
-	validator.UF = "SC"
+	validator.UF =  validator.GetEnumUF("SC")
+	// OU
+	//validator.UF = validator.GetEnumUF("42")
 
 	result, err := validator.Validate()
 	if err != nil {
@@ -51,7 +53,7 @@ func main() {
 Basta clonar o projeto e rodar o comando:
 
 ```go
-  go test
+  go test ./...
 ```
 
 ## Utilização

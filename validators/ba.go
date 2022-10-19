@@ -1,12 +1,12 @@
 package validators
 
-// BA struct - Bahia
+// Bahia struct - Bahia
 // Implements the Validator interface
-type BA struct {
+type Bahia struct {
 }
 
 // IsValid func
-func (v BA) IsValid(insc string) bool {
+func (v Bahia) IsValid(insc string) bool {
 
 	rule := NewRule()
 	if !rule.IsCorrectSize(insc, 8) && !rule.IsCorrectSize(insc, 9) {

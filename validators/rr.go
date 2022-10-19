@@ -4,13 +4,13 @@ import (
 	"strconv"
 )
 
-// RR struct - Roraima
+// Roraima struct - Roraima
 // Implements the Validator interface
-type RR struct {
+type Roraima struct {
 }
 
 // IsValid func
-func (v RR) IsValid(insc string) bool {
+func (v Roraima) IsValid(insc string) bool {
 
 	rule := NewRule()
 	if !rule.IsCorrectSize(insc, 9) {

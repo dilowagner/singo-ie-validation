@@ -1,12 +1,12 @@
 package validators
 
-// MA struct - Maranhão
+// Maranhao struct - Maranhão
 // Implements the Validator interface
-type MA struct {
+type Maranhao struct {
 }
 
 // IsValid func
-func (v MA) IsValid(insc string) bool {
+func (v Maranhao) IsValid(insc string) bool {
 
 	rule := NewRule()
 

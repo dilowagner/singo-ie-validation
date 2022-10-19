@@ -1,12 +1,12 @@
 package validators
 
-// PB struct - Paraiba
+// Paraiba struct - Paraiba
 // Implements the Validator interface
-type PB struct {
+type Paraiba struct {
 }
 
 // IsValid func
-func (v PB) IsValid(insc string) bool {
+func (v Paraiba) IsValid(insc string) bool {
 
 	rule := NewRule()
 

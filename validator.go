@@ -9,37 +9,6 @@ import (
 	"github.com/dilowagner/singo-ie-validation/validators"
 )
 
-// Constantes
-const (
-	Acre            = "AC" // AC Acre
-	Alagoas         = "AL" // AL Alagoas
-	Amapa           = "AP" // AP Amapá
-	Amazonas        = "AM" // AM Amazonas
-	Bahia           = "BA" // BA Bahia
-	Ceara           = "CE" // CE Ceará
-	DistritoFederal = "DF" // DF Distrito Federal
-	EspiritoSanto   = "ES" // ES Espirito Santo
-	Goais           = "GO" // GO Goias
-	Maranhao        = "MA" // MA Maranhão
-	MatoGrosso      = "MT" // MT Mato Grosso
-	MatoGrossoSul   = "MS" // MS Mato Grosso do Sul
-	MinasGerais     = "MG" // MG Minas Gerais
-	Para            = "PA" // PA Pará
-	Paraiba         = "PB" // PB Paraíba
-	Parana          = "PR" // PR Paraná
-	Pernambuco      = "PE" // PE Pernambuco
-	Piaui           = "PI" // PI Piauí
-	RioJaneiro      = "RJ" // RJ Rio de Janeiro
-	RioGrandeNorte  = "RN" // RN Rio Grande do Norte
-	RioGrandeSul    = "RS" // RS Rio Grande do Sul
-	Rondonia        = "RO" // RO Rondônia
-	Roraima         = "RR" // RR Roraima
-	SantaCatarina   = "SC" // SC Santa Catarina
-	SaoPaulo        = "SP" // SP São Paulo
-	Sergipe         = "SE" // SE Sergipe
-	Tocantins       = "TO" // TO Tocantins
-)
-
 // ValidatableManager interface
 type ValidatableManager interface {
 	Validate() (bool, error)
@@ -48,7 +17,7 @@ type ValidatableManager interface {
 // IEValidator struct
 type IEValidator struct {
 	IE string
-	UF string
+	UF validators.UFEnum
 }
 
 // NewIEValidator create the instance for IEValidator
@@ -59,71 +28,15 @@ func NewIEValidator() *IEValidator {
 // Validate func
 func (v IEValidator) Validate() (bool, error) {
 
-	var validator validators.Validatable
-
 	insc := v.filter(v.IE)
 	if len(insc) == 0 {
-		return false, errors.New("Inscrição estadual inválida")
+		return false, errors.New("inscrição estadual inválida")
 	}
-	uf := strings.ToUpper(v.UF)
 
-	switch uf {
-	case Acre:
-		validator = validators.AC{}
-	case Alagoas:
-		validator = validators.AL{}
-	case Amapa:
-		validator = validators.AP{}
-	case Amazonas:
-		validator = validators.AM{}
-	case Bahia:
-		validator = validators.BA{}
-	case Ceara:
-		validator = validators.CE{}
-	case DistritoFederal:
-		validator = validators.DF{}
-	case EspiritoSanto:
-		validator = validators.ES{}
-	case Goais:
-		validator = validators.GO{}
-	case Maranhao:
-		validator = validators.MA{}
-	case MatoGrosso:
-		validator = validators.MT{}
-	case MatoGrossoSul:
-		validator = validators.MS{}
-	case MinasGerais:
-		validator = validators.MG{}
-	case Para:
-		validator = validators.PA{}
-	case Paraiba:
-		validator = validators.PB{}
-	case Parana:
-		validator = validators.PR{}
-	case Pernambuco:
-		validator = validators.PE{}
-	case Piaui:
-		validator = validators.PI{}
-	case RioJaneiro:
-		validator = validators.RJ{}
-	case RioGrandeNorte:
-		validator = validators.RN{}
-	case RioGrandeSul:
-		validator = validators.RS{}
-	case Rondonia:
-		validator = validators.RO{}
-	case Roraima:
-		validator = validators.RR{}
-	case SantaCatarina:
-		validator = validators.SC{}
-	case SaoPaulo:
-		validator = validators.SP{}
-	case Sergipe:
-		validator = validators.SE{}
-	case Tocantins:
-		validator = validators.TO{}
-	default:
-		return false, errors.New("UF inválida, verifique o estado passado por parâmetro!")
+	validator := v.getValidate()
+
+	if validator == nil {
+		return false, errors.New("uf inválida, verifique o estado passado por parâmetro")
 	}
 
 	return validator.IsValid(insc), nil
@@ -133,4 +46,78 @@ func (v IEValidator) filter(ie string) string {
 
 	regex, _ := regexp.Compile("[^P0-9]+")
 	return regex.ReplaceAllString(strings.TrimSpace(strings.ToUpper(v.IE)), "")
+}
+
+func (v IEValidator) getValidate() validators.Validator {
+	switch v.UF {
+	case validators.AC:
+		return validators.Acre{}
+	case validators.AL:
+		return validators.Alagoas{}
+	case validators.AP:
+		return validators.Amapa{}
+	case validators.AM:
+		return validators.Amazonas{}
+	case validators.BA:
+		return validators.Bahia{}
+	case validators.CE:
+		return validators.Ceara{}
+	case validators.DF:
+		return validators.DistroFederal{}
+	case validators.ES:
+		return validators.EspiritoSanto{}
+	case validators.GO:
+		return validators.Goias{}
+	case validators.MA:
+		return validators.Maranhao{}
+	case validators.MT:
+		return validators.MataGrosso{}
+	case validators.MS:
+		return validators.MatoGrossoSul{}
+	case validators.MG:
+		return validators.MinasGerais{}
+	case validators.PA:
+		return validators.Para{}
+	case validators.PB:
+		return validators.Paraiba{}
+	case validators.PR:
+		return validators.Parana{}
+	case validators.PE:
+		return validators.Pernambuco{}
+	case validators.PI:
+		return validators.Piaui{}
+	case validators.RJ:
+		return validators.RioJaneiro{}
+	case validators.RN:
+		return validators.RioGrandeNorte{}
+	case validators.RS:
+		return validators.RioGrandeSul{}
+	case validators.RO:
+		return validators.Rondonia{}
+	case validators.RR:
+		return validators.Roraima{}
+	case validators.SC:
+		return validators.SantaCatarina{}
+	case validators.SP:
+		return validators.SaoPaulo{}
+	case validators.SE:
+		return validators.Sergipe{}
+	case validators.TO:
+		return validators.Tocantins{}
+	default:
+		return nil
+	}
+}
+
+func (v IEValidator) GetEnumUF(uf string) validators.UFEnum {
+
+	tpUF := new(validators.UFEnum)
+
+	err := tpUF.Scan(uf)
+
+	if err != nil {
+		return validators.Undefined
+	}
+
+	return *tpUF
 }

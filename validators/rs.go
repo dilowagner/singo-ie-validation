@@ -1,12 +1,12 @@
 package validators
 
-// RS struct - Rio Grande do Sul
+// RioGrandeSul struct - Rio Grande do Sul
 // Implements the Validator interface
-type RS struct {
+type RioGrandeSul struct {
 }
 
 // IsValid func
-func (v RS) IsValid(insc string) bool {
+func (v RioGrandeSul) IsValid(insc string) bool {
 
 	rule := NewRule()
 

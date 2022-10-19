@@ -1,0 +1,126 @@
+Fonte: http://www.sintegra.gov.br/Cad_Estados/cad_MG.html
+
+GOVERNO DO ESTADO DE MINAS GERAIS
+ROTEIRO DE CRÍTICA DA INSCRIÇÃO ESTADUAL
+
+ 
+
+FORMATO GERAL: A1A2A3B1B2B3B4B5B6C1C2D1D2
+
+
+
+Onde: A= Código do Município
+B= Número da inscrição
+C= Número de ordem do estabelecimento
+D= Dígitos de controle
+
+
+CÁLCULO DE D1 (primeiro dígito)
+
+
+Para se calcular primeiro dígito procede-se da seguinte forma:
+
+
+a.
+
+
+Igualar as casas para o cálculo, o que consiste em inserir o algarismo zero "0" imediatamente após o número de código do município, desprezando-se os dígitos de controle.
+Exemplo: Número da inscrição: 062 307 904 00 ? ?
+
+Número a ser trabalhado: 062 "0" 307904 00 -- --
+
+
+b.
+
+
+Multiplica-se os algarismos do número a ser trabalhado, por 1 e por 2, sucessivamente, da esquerda para a direita.
+Exemplo:
+
+....0....6....2....0....3....0....7....9....0....4....0....0
+....x....x....x....x....x....x....x....x....x....x....x....x
+....1....2....1....2....1....2....1....2....1....2....1....2
+....==============================
+
+....0...12....2....0....3....0...7...18....0....8....0....0
+
+
+c.
+
+
+Soma-se os algarismos (não os produtos) do resultado obtido
+Exemplo: 0+1+2+2+0+3+0+7+1+8+0+8+0+0=32
+
+
+d.
+
+
+Subtrai-se o resultado da soma do item anterior, da primeira dezena exata imediatamente superior:
+Exemplo: "40" - 32= 8
+
+
+e.
+
+
+O resultado encontrado corresponderá ao 1º dígito de controle:
+
+
+Exemplo: 062307904 00 "8" ?
+
+
+CÁLCULO DE D2 (segundo dígito)
+
+
+Para se calcular o 2º dígito, procede-se da seguinte forma:
+
+
+a
+
+
+Utiliza-se o número de inscrição acrescido do primeiro dígito encontrado (não há que se igualar as casas com a inserção do "0" zero)
+
+
+b
+
+
+Cada algarismo, da direita para a esquerda, é multiplicado, sucessivamente, por 2,3,4,5,6,7,8,9,10,11, quando se reinicia a série 2,3,
+Exemplo:
+
+....0....6....2....3....0....7....9....0....4....0....0....8
+....x....x....x....x....x....x....x....x....x....x....x...x
+....3....2...11...10...9....8....7....6....5....4....3....2
+....==============================
+
+....0...12..22...30...0...56...63...0...20...0....0...16
+
+
+c
+
+
+Soma-se então os produtos (não os algarismos)
+Exemplo: 0+12+22+30+0+56+63+0+20+0+0+16 = 219
+
+
+d
+
+
+Divide-se então o resultado por 11:
+Exemplo:219 11
+109 19
+10
+
+
+e
+
+
+O resto encontrado na divisão será subtraído de onze, encontrando-se, com o resultado desta última operação, o segundo dígito da inscrição
+
+11 - "10" = 1
+
+Por conseguinte - D2 =1
+
+Observe que sendo o resto da divisão "1" ou "0" (zero), o dígito igualmente será "0" (zero) sendo desnecessária a subtração acima demonstrada.
+
+
+Pelos exemplos, o nº da Inscrição trabalhada no presente demonstrativo é:
+
+062.307.904/0081

@@ -1,0 +1,150 @@
+Fonte: http://www.sintegra.gov.br/Cad_Estados/cad_PE.html
+
+GOVERNO DO ESTADO DE PERNAMBUCO
+ROTEIRO DE CRÍTICA DA INSCRIÇÃO ESTADUAL
+
+Dígito Verificador da Inscrição Estadual no eFisco
+Procedimentos de Cálculo (ex. para 0321418-40)
+
+1.
+
+Multiplique cada algarismo principal pelo seu respectivo peso:
+
+0 3 2 1 4 1 8  (algarismos)
+
+x x x x x x x  
+
+8 7 6 5 4 3 2  (pesos)
+
+= = = = = = =  
+
+0 21 12 5 16 3 16  (produtos)
+
+2. Some os produtos obtidos para encontrar o total:
+
+0 + 21 + 12 + 5 + 16 + 3 + 16 = 73 (total dos produtos)
+
+3. Divida esse total pela constante "11" para obter o resto:
+
+ 73/11 = 6, Resto = 7.
+
+4. Se o resto da divisão for igual a 1 ou 0, o primeiro dígito será igual a zero.
+
+Senão, Subtraia esse resto da constante "11" para encontrar o dígito verificador:
+
+Como o resto é igual a 7, então: 11 – 7 = 4 (primeiro dígito de controle)
+
+5. Multiplique cada algarismo principal pelo seu respectivo peso para obter o segundo dígito de controle (o cálculo leva em consideração o primeiro dígito, já calculado)
+
+0 3 2 1 4 1 8 4  (algarismos)
+
+x x x x x x x x  
+
+9 8 7 6 5 4 3 2  (pesos)
+
+= = = = = = = =  
+
+0 24 14 6 20 4 24 8  (produtos)
+
+6. Some os produtos obtidos para encontrar o total:
+
+0 + 24 + 14 + 6 + 20 + 4 + 24 + 8 =  100 (total dos produtos)
+
+7. Divida esse total pela constante "11" para obter o resto:
+
+ 100/11 = 9, Resto = 1.
+
+8. Se o resto da divisão for igual a 1 ou 0, o dígito será igual à zero.
+
+Senão, Subtraia esse resto da constante "11" para encontrar o dígito verificador:
+
+Resto igual a 1. Portanto, segundo dígito é igual à zero.
+
+Exemplo de rotina de cálculo da inscrição estadual do e-Fisco
+
+            private static String calcularDigitoVerificadorInscricaoEstadual(String pNuRadicalInscricaoEstadual) {
+                        long[] numero = new long[9];
+                        String nuDigitoVerificador = "";
+
+                        for (int i = 0; i < 7; i++) {
+                                  numero[i] = (pNuRadicalInscricaoEstadual.charAt(i) - 48);
+
+                        // *** O primeiro digito verificador do Numero de Inscricao Estadual ******
+                        long soma1 = 0;
+
+                        for (int i = 0; i < 7; i++) {
+                                   soma1 += numero[i] * (8 - i);
+                        }
+                        long resto1 = soma1 % 11;
+                        if (resto1 == 0 || resto1 == 1) {
+                                   numero[7] = 0;
+                        } else
+                                   numero[7] = 11 - resto1;
+
+                        long soma2 = (numero[7] * 2);
+                        for (int i = 0; i < 7; i++) {
+                                   soma2 += numero[i] * (9 - i);
+                        }
+
+                        long resto2 = soma2 % 11;
+
+                        if (resto2 == 0 || resto2 == 1)
+                                   numero[8] = 0;
+                        else
+                                    numero[8] = 11 - resto2;
+
+                        nuDigitoVerificador = "" + numero[7] + numero[8];
+
+                        return nuDigitoVerificador;
+            }
+
+
+
+
+Dígito Verificador da Inscrição Estadual Antiga
+O número de inscrição estadual no Cadastro de Contribuintes do Estado de Pernambuco - CACEPE possui 14 algarismos (dígitos), sendo 13 principais e 1 verificador. O cálculo do dígito verificador envolve o uso de "pesos" e da função "módulo" com parâmetro "11", conforme pode ser visto no exemplo abaixo:
+
+Procedimentos de Cálculo (ex. para 18.1.001.0000004-9)
+
+1.	Multiplique cada algarismo principal pelo seu respectivo peso:
+1		8		1		0		0		1		0		0		0		0		0		0		4		(algarismos)
+x		x		x		x		x		x		x		x		x		x		x		x		x		
+5		4		3		2		1		9		8		7		6		5		4		3		2		(pesos)
+=		=		=		=		=		=		=		=		=		=		=		=		=		
+5		32		3		0		0		9		0		0		0		0		0		0		8		(produtos)
+2.	Some os produtos obtidos para encontrar o total:
+5	+	32	+	3	+	0	+	0	+	9	+	0	+	0	+	0	+	0	+	0	+	0	+	8	=	57		(total dos produtos)
+3.	Divida esse total pela constante "11" para obter o resto:
+cacepe1.gif (1181 bytes)
+4.	Subtraia esse resto da constante "11" para encontrar o dígito verificador:
+11 - 2 = 9
+Quando essa diferença for maior que "9", subtraia "10" unidades para obter o valor do dígito verificador, uma vez que o mesmo deve ser sempre representado por apenas um algarismo.
+Exemplo de rotina de cálculo da antiga inscrição estadual (exemplo em linguagem Pascal)
+O parâmetro "ie" deve ser do tipo String com 14 posições.
+
+Function teste_dv_cacepe (ie: String): Boolean;
+     Var a, b, c, d, e, f, g, h, i, j, k, l, m, n, total, dig: Integer;
+     Begin
+         a := StrToInt(Copy(ie,14,1));
+         b := StrToInt(Copy(ie,13,1)) * 2;
+         c := StrToInt(Copy(ie,12,1)) * 3;
+         d := StrToInt(Copy(ie,11,1)) * 4;
+         e := StrToInt(Copy(ie,10,1)) * 5;
+         f := StrToInt(Copy(ie,9,1)) * 6;
+         g := StrToInt(Copy(ie,8,1)) * 7;
+         h := StrToInt(Copy(ie,7,1)) * 8;
+         i := StrToInt(Copy(ie,6,1)) * 9;
+         j := StrToInt(Copy(ie,5,1)) * 1;
+         k := StrToInt(Copy(ie,4,1)) * 2;
+         l := StrToInt(Copy(ie,3,1)) * 3;
+         m := StrToInt(Copy(ie,2,1)) * 4;
+         n := StrToInt(Copy(ie,1,1)) * 5;
+         total := b + c + d + e + f + g + h + i + j + k + l + m + n;
+         dig := 11 - (total Mod 11);
+         If dig > 9 Then
+              dig := dig - 10;
+         If dig <> a Then
+            teste_dv_cacepe := False
+         Else
+            teste_dv_cacepe := True;
+    End;

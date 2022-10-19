@@ -1,12 +1,12 @@
 package validators
 
-// AM struct - Amazonas
+// Amazonas struct - Amazonas
 // Implements the Validator interface
-type AM struct {
+type Amazonas struct {
 }
 
 // IsValid func
-func (v AM) IsValid(insc string) bool {
+func (v Amazonas) IsValid(insc string) bool {
 
 	rule := NewRule()
 
