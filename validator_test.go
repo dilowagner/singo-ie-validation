@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/darllantissei/singo-ie-validation/validators"
+	"github.com/eucatur/singo-ie-validation/validators"
 	"github.com/stretchr/testify/assert"
 )
 
