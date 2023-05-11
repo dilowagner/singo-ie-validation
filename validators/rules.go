@@ -32,6 +32,31 @@ func (r *Rules) IsStartWith(insc string, value string) bool {
 	return insc[:len(value)] == value
 }
 
+// IsStartBetween function
+func (r *Rules) IsStartBetween(insc string, start string, end string) bool {
+
+	istart, err := strconv.Atoi(start)
+	if err != nil {
+		return false
+	}
+
+	iend, err := strconv.Atoi(end)
+	if err != nil {
+		return false
+	}
+
+	if istart > iend {
+		return false
+	}
+
+	value, err := strconv.Atoi(insc[:len(start)])
+	if err != nil {
+		return false
+	}
+
+	return value >= istart && value <= iend
+}
+
 // GetWeight function
 func (r *Rules) GetWeight(start int, size int) []int {
 

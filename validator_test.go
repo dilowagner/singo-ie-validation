@@ -717,6 +717,20 @@ func TestValidatorGOInvalidNotStartWith10Or11Or15(t *testing.T) {
 	assert.False(t, result)
 }
 
+func TestValidatorGOValidStartWith20(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "200193023"
+	validator.UF = validators.GO
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do inicio do estado de Goias")
+	}
+	assert.True(t, result)
+}
+
 func TestValidatorGOWithCharactersInvalid(t *testing.T) {
 
 	validator := NewIEValidator()
