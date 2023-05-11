@@ -1567,6 +1567,20 @@ func TestValidatorROValid14Digits(t *testing.T) {
 	assert.True(t, result)
 }
 
+func TestValidatorROValid14DigitsMod0(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "00000000123421" // Valido
+	validator.UF = validators.RO
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado de Rondonia")
+	}
+	assert.True(t, result)
+}
+
 func TestValidatorROInvalid(t *testing.T) {
 
 	validator := NewIEValidator()
