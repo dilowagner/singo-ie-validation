@@ -1747,6 +1747,20 @@ func TestValidatorSPValid(t *testing.T) {
 	assert.True(t, result)
 }
 
+func TestValidatorSPValidWithMod10(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "330.062.780.110" // Valido
+	validator.UF = validators.SP
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado de São Paulo")
+	}
+	assert.True(t, result)
+}
+
 func TestValidatorSPValidWithPLetter(t *testing.T) {
 
 	validator := NewIEValidator()

@@ -51,7 +51,7 @@ func (v SaoPaulo) IsValid(insc string) bool {
 	weights = []int{3, 2, 10, 9, 8, 7, 6, 5, 4, 3, 2}
 	total = rule.CalculateTotal(firstBase+firstDigit+secondBase, 11, weights)
 	mod = rule.CalculateMod(total, 11)
-	secondDigit := strconv.Itoa(mod)
+	secondDigit := strconv.Itoa(mod % 10)
 
 	return insc == firstBase+firstDigit+secondBase+secondDigit
 }
