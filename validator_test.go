@@ -1652,6 +1652,20 @@ func TestValidatorROWithCharactersInvalid(t *testing.T) {
 	assert.False(t, result)
 }
 
+func TestValidatorROWITHNOZerosWithIEValid(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "625213" // IE válida sem os zeros à esquerda
+	validator.UF = validators.RO
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado de Rondonia")
+	}
+	assert.True(t, result)
+}
+
 /**************************************************************
  * RORAIMA
  *************************************************************/

@@ -28,27 +28,34 @@ func (v Rondonia) IsValid(insc string) bool {
 
 	rule := v.getRule()
 
-	if rule.IsCorrectSize(insc, 9) {
+	switch {
+	case rule.IsCorrectSize(insc, 9):
+		{
 
-		base := insc[3:8]
-		weights := rule.GetWeight(6, 5)
-		total := rule.CalculateTotal(base, 5, weights)
-		var digit = rule.GetDigit(total, moduleDivisor)
+			base := insc[3:8]
+			weights := rule.GetWeight(6, 5)
+			total := rule.CalculateTotal(base, 5, weights)
+			var digit = rule.GetDigit(total, moduleDivisor)
 
-		return insc == insc[:8]+digit
+			return insc == insc[:8]+digit
 
-	} else if rule.IsCorrectSize(insc, 14) {
+		}
+	case rule.IsCorrectSize(insc, 14):
+		{
 
-		base := rule.GetBaseValue(insc, 13)
+			base := rule.GetBaseValue(insc, 13)
 
-		weights := rule.GetWeight(6, 13)
-		total := rule.CalculateTotal(insc, 13, weights)
-		var digit = v.getDigit(total, moduleDivisor)
+			weights := rule.GetWeight(6, 13)
+			total := rule.CalculateTotal(insc, 13, weights)
+			var digit = v.getDigit(total, moduleDivisor)
 
-		return insc == fmt.Sprintf("%s%d", base, digit)
+			return insc == fmt.Sprintf("%s%d", base, digit)
 
-	} else {
-		return false
+		}
+	default:
+		{
+			return v.IsValid(fmt.Sprintf("%014s", insc))
+		}
 	}
 }
 
