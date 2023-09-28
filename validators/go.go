@@ -17,7 +17,7 @@ func (v Goias) IsValid(insc string) bool {
 		return false
 	}
 
-	if !rule.IsStartWith(insc, "10") && !rule.IsStartWith(insc, "11") && !rule.IsStartWith(insc, "15") {
+	if !rule.IsStartWith(insc, "10") && !rule.IsStartWith(insc, "11") && !rule.IsStartWith(insc, "15") && !rule.IsStartBetween(insc, "20", "29") {
 		return false
 	}
 

@@ -717,6 +717,20 @@ func TestValidatorGOInvalidNotStartWith10Or11Or15(t *testing.T) {
 	assert.False(t, result)
 }
 
+func TestValidatorGOValidStartWith20(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "200193023"
+	validator.UF = validators.GO
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do inicio do estado de Goias")
+	}
+	assert.True(t, result)
+}
+
 func TestValidatorGOWithCharactersInvalid(t *testing.T) {
 
 	validator := NewIEValidator()
@@ -1567,6 +1581,20 @@ func TestValidatorROValid14Digits(t *testing.T) {
 	assert.True(t, result)
 }
 
+func TestValidatorROValid14DigitsMod0(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "00000000123421" // Valido
+	validator.UF = validators.RO
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado de Rondonia")
+	}
+	assert.True(t, result)
+}
+
 func TestValidatorROInvalid(t *testing.T) {
 
 	validator := NewIEValidator()
@@ -1724,6 +1752,20 @@ func TestValidatorSPValid(t *testing.T) {
 	validator := NewIEValidator()
 
 	validator.IE = "394505080693" // Valido
+	validator.UF = validators.SP
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado de São Paulo")
+	}
+	assert.True(t, result)
+}
+
+func TestValidatorSPValidWithMod10(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "330.062.780.110" // Valido
 	validator.UF = validators.SP
 
 	result, err := validator.Validate()
