@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/dilowagner/singo-ie-validation/validators"
+	"github.com/eucatur/singo-ie-validation/validators"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -1581,11 +1581,11 @@ func TestValidatorROValid14Digits(t *testing.T) {
 	assert.True(t, result)
 }
 
-func TestValidatorROValid14DigitsMod0(t *testing.T) {
+func TestValidatorROValid14DigitsIEValid(t *testing.T) {
 
 	validator := NewIEValidator()
 
-	validator.IE = "00000000123421" // Valido
+	validator.IE = "00000004402341" // Valido
 	validator.UF = validators.RO
 
 	result, err := validator.Validate()
@@ -1593,6 +1593,37 @@ func TestValidatorROValid14DigitsMod0(t *testing.T) {
 		t.Error("Erro na validacao do estado de Rondonia")
 	}
 	assert.True(t, result)
+  
+}
+
+func TestValidatorROValid14DigitsMod0(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "00000000123421" // Valido  
+  validator.UF = validators.RO
+	
+  result, err := validator.Validate()	
+  if err != nil {	
+    t.Error("Erro na validacao do estado de Rondonia")	
+  }	
+  assert.True(t, result)
+  
+}
+
+func TestValidatorROValid14DigitsIEAnotherPossibility(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "00000000625213" // Valido
+	validator.UF = validators.RO
+
+	result, err := validator.Validate()
+	if err != nil {
+		t.Error("Erro na validacao do estado de Rondonia")
+	}
+	assert.True(t, result)
+
 }
 
 func TestValidatorROInvalid(t *testing.T) {
