@@ -1,5 +1,10 @@
 package validators
 
+import (
+	"fmt"
+	"regexp"
+)
+
 // MataGrosso struct - Mato Grosso
 // Implements the Validator interface
 type MataGrosso struct {
@@ -10,8 +15,16 @@ func (v MataGrosso) IsValid(insc string) bool {
 
 	rule := NewRule()
 
+	re := regexp.MustCompile("[^0-9]")
+	insc = re.ReplaceAllString(insc, "")
+
 	if !rule.IsCorrectSize(insc, 11) {
-		return false
+
+		if len([]rune(insc)) > 11 {
+			return false
+		}
+
+		return v.IsValid(fmt.Sprintf("%011s", insc))
 	}
 
 	base := rule.GetBaseValue(insc, 10)
