@@ -1,5 +1,10 @@
 package validators
 
+import (
+	"fmt"
+	"regexp"
+)
+
 // DistroFederal struct - Distrito Federal
 // Implements the Validator interface
 type DistroFederal struct {
@@ -10,8 +15,16 @@ func (v DistroFederal) IsValid(insc string) bool {
 
 	rule := NewRule()
 
+	re := regexp.MustCompile("[^0-9]")
+	insc = re.ReplaceAllString(insc, "")
+
 	if !rule.IsCorrectSize(insc, 13) {
-		return false
+
+		if len([]rune(insc)) > 13 {
+			return false
+		}
+
+		return v.IsValid(fmt.Sprintf("%013s", insc))
 	}
 
 	base := rule.GetBaseValue(insc, 11)
