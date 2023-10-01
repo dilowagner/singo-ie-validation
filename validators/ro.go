@@ -54,6 +54,10 @@ func (v Rondonia) IsValid(insc string) bool {
 		}
 	default:
 		{
+			if len([]rune(insc)) > 14 {
+				return false
+			}
+
 			return v.IsValid(fmt.Sprintf("%014s", insc))
 		}
 	}
