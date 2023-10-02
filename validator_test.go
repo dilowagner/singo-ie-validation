@@ -917,6 +917,55 @@ func TestValidatorMTWithCharactersInvalid(t *testing.T) {
 	assert.False(t, result)
 }
 
+func TestValidatorMTWithMasked(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "67.893.856-3" // IE válida
+	validator.UF = validators.MT
+
+	result, err := validator.Validate()
+	assert.Nil(t, err)
+	assert.True(t, result)
+}
+
+func TestValidatorMTWithNOMasked(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "678938563" // IE válida
+	validator.UF = validators.MT
+
+	result, err := validator.Validate()
+	assert.Nil(t, err)
+	assert.True(t, result)
+}
+
+func TestValidatorMTWithValids(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validsIE := []string{
+		"9267893856-5",
+		"1502491163-0",
+		"8839594264-4",
+		"604906641",
+		"13.072.501-3",
+		"130725013",
+		"13.338.619-8",
+	}
+
+	for _, ie := range validsIE {
+
+		validator.IE = ie // IE inválida
+		validator.UF = validators.MT
+
+		result, err := validator.Validate()
+		assert.Nil(t, err)
+		assert.True(t, result, fmt.Sprintf("IE %s deve ser válida", ie))
+	}
+}
+
 /**************************************************************
  * MATO GROSSO DO SUL
  *************************************************************/
