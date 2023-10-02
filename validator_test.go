@@ -1666,6 +1666,18 @@ func TestValidatorROWITHNOZerosWithIEValid(t *testing.T) {
 	assert.True(t, result)
 }
 
+func TestValidatorROInvalidIEMoreThanLengthExpected(t *testing.T) {
+
+	validator := NewIEValidator()
+
+	validator.IE = "123456789012345" // IE inválida com tamanho maior que o esperado
+	validator.UF = validators.RO
+
+	result, err := validator.Validate()
+	assert.Nil(t, err)
+	assert.False(t, result)
+}
+
 /**************************************************************
  * RORAIMA
  *************************************************************/
